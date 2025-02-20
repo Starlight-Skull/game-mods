@@ -5,8 +5,8 @@
 
 | Version | Upload Date  | File |
 |---------|--------------|------|
-| 1.0     | 12 Jul. 2020 | [Download](https://github.com/Starlight-Skull/game-mods/raw/refs/heads/main/Terrraria/Corrupt%20Dryad/Archive/Corrupt%20Dryad%20v1.0.zip) |
-| 1.1     | 15 Sep. 2023 | [Download](https://github.com/Starlight-Skull/game-mods/raw/refs/heads/main/Terrraria/Corrupt%20Dryad/Archive/Corrupt%20Dryad%20v1.1.zip) |
+| 1.0     | 12 Jul. 2020 | [Download](https://github.com/Starlight-Skull/game-mods/raw/refs/heads/main/Terraria/Corrupt%20Dryad/Archive/Corrupt%20Dryad%20v1.0.zip) |
+| 1.1     | 15 Sep. 2023 | [Download](https://github.com/Starlight-Skull/game-mods/raw/refs/heads/main/Terraria/Corrupt%20Dryad/Archive/Corrupt%20Dryad%20v1.1.zip) |
 
 ![Dryad.png](./Dryad.png)
 
