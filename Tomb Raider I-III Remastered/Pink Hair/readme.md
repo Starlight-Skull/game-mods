@@ -18,7 +18,7 @@ This is mostly the result of me experimenting with how the dds textures work but
 
 Just install over the game's root directory and keep a backup of the original file.
 
-Alternatively install with the [Vortex plugin](https://www.nexusmods.com/site/mods/796).
+Alternatively install with the [Vortex plugin](../Vortex%20Plugin/readme.md).
 
 </br>
 

@@ -1,0 +1,7 @@
+{
+  "name": "Game: Tomb Raider I-III Remastered",
+  "author": "StarlightSkull",
+  "version": "1.0.0",
+  "description": "Basic support for Tomb Raider I-III Remastered",
+  "type": "game"
+}
