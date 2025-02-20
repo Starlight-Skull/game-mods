@@ -2,11 +2,13 @@
 
 - [Nexus Mods](https://www.nexusmods.com/tombraidertrilogyremastered/mods/185)
 
-| Version | Upload Date  | File |
-|---------|--------------|------|
+| Version | Upload Date  | File                                                                                                                                                |
+| ------- | ------------ | --------------------------------------------------------------------------------------------------------------------------------------------------- |
 | 1.0     | 26 Feb. 2024 | [Download](https://github.com/Starlight-Skull/game-mods/raw/refs/heads/main/Tomb%20Raider%20I-III%20Remastered/Pink%20Hair/Archive/Pink%20Hair.zip) |
 
 ---
+
+> *Hair - Textures*
 
 Simple pink hair retexture with white hairbands.
 

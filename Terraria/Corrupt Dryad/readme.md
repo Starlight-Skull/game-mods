@@ -3,12 +3,14 @@
 - [Steam Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=2456319408)
 - [Terraria Forums](https://forums.terraria.org/index.php?threads/corrupt-dryad.95932/)
 
-| Version | Upload Date  | File |
-|---------|--------------|------|
-| 1.0     | 12 Jul. 2020 | [Download](https://github.com/Starlight-Skull/game-mods/raw/refs/heads/main/Terraria/Corrupt%20Dryad/Archive/Corrupt%20Dryad%20v1.0.zip) |
-| 1.1     | 15 Sep. 2023 | [Download](https://github.com/Starlight-Skull/game-mods/raw/refs/heads/main/Terraria/Corrupt%20Dryad/Archive/Corrupt%20Dryad%20v1.1.zip) |
+| Version | Upload Date  | File                                                                                                                                     | Description                          |
+| ------- | ------------ | ---------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------ |
+| 1.0     | 12 Jul. 2020 | [Download](https://github.com/Starlight-Skull/game-mods/raw/refs/heads/main/Terraria/Corrupt%20Dryad/Archive/Corrupt%20Dryad%20v1.0.zip) |                                      |
+| 1.1     | 15 Sep. 2023 | [Download](https://github.com/Starlight-Skull/game-mods/raw/refs/heads/main/Terraria/Corrupt%20Dryad/Archive/Corrupt%20Dryad%20v1.1.zip) | Updated pack format for Terraria 1.4 |
 
 ---
+
+> *Resource Packs - Other Packs*
 
 Inspired by the Dungeon Defenders 2 crossover.
 

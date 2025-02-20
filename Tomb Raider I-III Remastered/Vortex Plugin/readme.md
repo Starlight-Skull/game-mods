@@ -2,11 +2,13 @@
 
 - [Nexus Mods](https://www.nexusmods.com/site/mods/796)
 
-| Version | Upload Date  | File |
-|---------|--------------|------|
+| Version | Upload Date  | File                                                                                                                                                                   |
+| ------- | ------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | 1.0     | 23 Feb. 2024 | [Download](https://github.com/Starlight-Skull/game-mods/raw/refs/heads/main/Tomb%20Raider%20I-III%20Remastered/Vortex%20Plugin/Archive/TRI-III%20Vortex%20Support.zip) |
 
 ---
+
+> *Vortex Extensions - Utilities for Modders - Utilities for Players - Game Extension*
 
 Basic support for Tomb Raider I-III Remastered
 

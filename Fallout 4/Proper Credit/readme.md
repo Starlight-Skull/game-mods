@@ -2,14 +2,16 @@
 
 - [Nexus Mods](https://www.nexusmods.com/fallout4/mods/39606)
 
-| Alternative | Version | Upload Date  | File |
-|-|----------|--------------|------|
-| Nexus Only | 1.0     | 21 Jun. 2019 | [Download](https://github.com/Starlight-Skull/game-mods/raw/refs/heads/main/Fallout%204/Proper%20Credit/Archive/Nexus%20BGS%20Logo%20Replacer%20v1.0.zip) |
-| Both Horizontal | 2.0     | 28 Jun. 2019 | [Download](https://github.com/Starlight-Skull/game-mods/raw/refs/heads/main/Fallout%204/Proper%20Credit/Archive/BGS%20&%20Nexus%20(horizontal)%20v2.0.zip) |
-| Both Vertical | 2.0     | 28 Jun. 2019 | [Download](https://github.com/Starlight-Skull/game-mods/raw/refs/heads/main/Fallout%204/Proper%20Credit/Archive/BGS%20&%20Nexus%20(vertical)%20v2.0.zi) |
-| Nexus Only | 2.0     | 28 Jun. 2019 | [Download](https://github.com/Starlight-Skull/game-mods/raw/refs/heads/main/Fallout%204/Proper%20Credit/Archive/Nexus%20Only%20v2.0.zip) |
+| Alternative       | Version | Upload Date  | File                                                                                                                                                       | Description                                                                                                                                                    |
+| ----------------- | ------- | ------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Bethesda Replacer | 1.0     | 21 Jun. 2019 | [Download](https://github.com/Starlight-Skull/game-mods/raw/refs/heads/main/Fallout%204/Proper%20Credit/Archive/Nexus%20BGS%20Logo%20Replacer%20v1.0.zip)  |                                                                                                                                                                |
+| Both Horizontal   | 2.0     | 28 Jun. 2019 | [Download](https://github.com/Starlight-Skull/game-mods/raw/refs/heads/main/Fallout%204/Proper%20Credit/Archive/BGS%20&%20Nexus%20(horizontal)%20v2.0.zip) | This adds the Nexus Mods logo next to the Bethesda Game Studios logo. Download only one main file.                                                             |
+| Both Vertical     | 2.0     | 28 Jun. 2019 | [Download](https://github.com/Starlight-Skull/game-mods/raw/refs/heads/main/Fallout%204/Proper%20Credit/Archive/BGS%20&%20Nexus%20(vertical)%20v2.0.zip)   | This adds the Nexus Mods logo below the Bethesda Game Studios logo. Download only one main file.                                                               |
+| Nexus Mods Only   | 2.0     | 28 Jun. 2019 | [Download](https://github.com/Starlight-Skull/game-mods/raw/refs/heads/main/Fallout%204/Proper%20Credit/Archive/Nexus%20Only%20v2.0.zip)                   | This replaces the Bethesda Game Studios logo with the one from Nexus Mods. The same as the original file but a higher resolution. Download only one main file. |
 
 ---
+
+> *User Interface - Replacer - Menu Replacer*
 
 UPDATE: this mod now adds the Nexus Mods logo together with the Bethesda Game Studios logo with currently three options.
 
@@ -52,11 +54,14 @@ There shouldn't be any problems unless MainMenu.swf is changed. (Which is what t
 
 ### Recommended Mods for the Main Menu **(not made by me)**
 
-- **CC Cleaner**: Hides the Creation Club News pop-up for those of you that don't really use the Creation Club. https://www.nexusmods.com/fallout4/mods/26592
+- **CC Cleaner**: Hides the Creation Club News pop-up for those of you that don't really use the Creation Club.
+https://www.nexusmods.com/fallout4/mods/26592
 
-- **No Bethesda and S.P.E.C.I.A.L Intro**: Removes the Bethesda intro and the S.P.E.C.I.A.L. videos so that your game will start faster. https://www.nexusmods.com/fallout4/mods/361
+- **No Bethesda and S.P.E.C.I.A.L Intro**: Removes the Bethesda intro and the S.P.E.C.I.A.L. videos so that your game will start faster.
+https://www.nexusmods.com/fallout4/mods/361
 
-- **Classic UI Sounds**: Changes the UI sounds to those of the previous games for that nostalgic feel. https://www.nexusmods.com/fallout4/mods/39018
+- **Classic UI Sounds**: Changes the UI sounds to those of the previous games for that nostalgic feel.
+https://www.nexusmods.com/fallout4/mods/39018
 
 - One of the many video and/or music replacers that I'm not gonna list because there are just too many.
 
@@ -64,9 +69,11 @@ There shouldn't be any problems unless MainMenu.swf is changed. (Which is what t
 
 ### Alternatives to this mod **(again, not made by me)**
 
-- **No Bethesda Logo In Main Menu**: Simply removes the Bethesda logo altogether. https://www.nexusmods.com/fallout4/mods/11979
+- **No Bethesda Logo In Main Menu**: Simply removes the Bethesda logo altogether.
+https://www.nexusmods.com/fallout4/mods/11979
 
-- **Bethesda Logo Skins**: Same thing as this mod but changes it to "BUGTHESDA" or "GREEDTHE$DA" https://www.nexusmods.com/fallout4/mods/26524
+- **Bethesda Logo Skins**: Same thing as this mod but changes it to "BUGTHESDA" or "GREEDTHE$DA"
+https://www.nexusmods.com/fallout4/mods/26524
 
 <br/>
 
