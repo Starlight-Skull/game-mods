@@ -1,45 +1,47 @@
-scn ChallengesScript
+SCN PrefixerScript
 
-array_var aChallenges
-ref rChallenge
+array_var aFormTypes
+array_var aTypeArray
+ref rItem
 string_var sPlugin
 string_var sNewName
-int iCount
-int iFlags
-int iFind
+short iCount
 
-Begin MenuMode 4
-	if GetGameRestarted != 0
-		iCount := 0
-		ForEach aChallenges <- GetLoadedTypeArray  113
-			let rChallenge := *aChallenges
+BEGIN MenuMode
+	IF GetGameRestarted	
+		FOREACH aFormTypes <- sv_Split (GetINIString "Settings\FormTypes" "StarlightSkull\Prefixer.ini") ","
+			iCount = 0
+			FOREACH aTypeArray <- GetLoadedTypeArray (#*aFormTypes)
+				rItem = *aTypeArray
+				IF EVAL IsFormValid rItem
+					; split the plugin name from the ref
+					sPlugin = RefToString rItem
+					sPlugin = sPlugin[0:((sv_Find ":" sPlugin) - 1)]
+					sPlugin = "Plugins\" + sPlugin
 
-			let sPlugin := RefToString rChallenge
-			let iFind := sv_Find ":" sPlugin
-			let iFind -= 1
-			let sPlugin := sPlugin[0:iFind]
-			let sPlugin := "Plugins\" + sPlugin
+					; if an INIstring exists add a space else set an empty one
+					sNewName = GetINIString $sPlugin "StarlightSkull\Prefixer.ini"
+					IF EVAL sv_Length sNewName
+						sNewName += " "
+					ELSE
+						SetINIString $sPlugin "%e" "StarlightSkull\Prefixer.ini"
+					ENDIF
+					sNewName += $rItem
 
-			let sNewName := GetINIString $sPlugin, "Challenges.ini"
-			if sv_Length sNewName
-				let sNewName += " "
-			else
-				SetINIString $sPlugin, "%e", "Challenges.ini"
-				let sNewName := GetINIString sPlugin, "Challenges.ini"
-			endif
-			let sNewName := sNewName + $rChallenge
+					; if formtype is challenge and is recurring
+					IF EVAL (#*aFormTypes) == 113
+						IF EVAL GetBit (GetChallengeFlags rItem), 1
+							sNewName += " " + (GetINIString "Settings\Recurring" "StarlightSkull\Prefixer.ini")
+						ENDIF
+					ENDIF
 
-			;1 Start Disabled		2 Recurring		4 Show Zero Progress
-			let iFlags := GetChallengeFlags rChallenge
-
-			if iFlags == 2 || iFlags == 3 || iFlags == 6 || iFlags == 7
-				let sNewName += " +"
-			endif
-
-			SetName $sNewName rChallenge
-			sv_Destruct sPlugin, sNewName
-			iCount += 1
-		loop
-		Print $iCount + " challenges renamed"
-	endif
-End
+					SetnameEx $sNewName rItem
+					iCount += 1
+				ENDIF
+			LOOP
+			Print $iCount + " forms of type " + *aFormTypes + " prefixed"
+		LOOP
+		sv_Destruct sPlugin, sNewName
+		StopQuest PrefixerQuest
+	ENDIF
+END
