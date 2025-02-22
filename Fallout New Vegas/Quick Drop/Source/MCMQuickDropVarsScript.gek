@@ -1,0 +1,26 @@
+scn MCMQuickDropVarsScript
+
+short iEnableSlot2
+
+short iEqSlot1
+short iEqSlot2
+
+short iKey1
+short iKey2
+short iKeyAct
+
+short iInit
+
+begin GameMode
+	if iInit
+	else
+		set iInit to 1
+		
+		set iKeyAct to 42
+		set iKey1 to 19
+		set iKey2 to 44
+		set iEqSlot1 to 5
+		set iEqSlot2 to 2
+		set iEnableSlot2 to 0
+	endif
+end

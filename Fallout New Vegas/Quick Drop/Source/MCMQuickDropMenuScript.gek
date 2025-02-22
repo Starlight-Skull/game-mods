@@ -1,0 +1,156 @@
+scn MCMQuickDropMenuScript
+
+short iMaster
+short iMouseover
+short iOption
+short iTemp
+float fTemp
+float fValue
+reference rList
+
+begin GameMode
+	if GetGameRestarted
+		if IsModLoaded "The Mod Configuration Menu.esp"
+			set iMaster to GetModIndex "The Mod Configuration Menu.esp"
+			set rList to BuildRef iMaster 2790
+			ListAddForm rList MCMQuickDropMenuItem
+		endif
+	endif
+end
+
+begin MenuMode 1013
+	if IsModLoaded "The Mod Configuration Menu.esp"
+	else
+		Return
+	endif
+
+	if GetUIFloat "StartMenu/MCM/_ActiveMod" == GetModIndex "QuickDrop.esp"
+		set iOption to GetUIFloat "StartMenu/MCM/_ActiveOption"
+		set fValue to GetUIFloat "StartMenu/MCM/_Value"
+
+		if GetUIFloat "StartMenu/MCM/_Reset"			;1 - RESET
+			SetUIFloat "StartMenu/MCM/_Reset" 0
+
+			SetUIFloat "StartMenu/MCM/*:1/_columns" 1
+			
+			set iTemp to 2-MCMQuickDropVars.iEnableSlot2
+			
+			SetUIFloat "StartMenu/MCM/*:1/*:6/_enable" 1
+			SetUIString "StartMenu/MCM/*:1/*:6/_title" "Enable Slot 2"
+			SetUIFloat "StartMenu/MCM/*:1/*:6/_type" 5
+			SetUIFloat "StartMenu/MCM/*:1/*:6/_value" MCMQuickDropVars.iEnableSlot2
+			
+			SetUIFloat "StartMenu/MCM/*:1/*:1/_enable" 1
+			SetUIString "StartMenu/MCM/*:1/*:1/_title" "Activator Key"
+			SetUIFloat "StartMenu/MCM/*:1/*:1/_type" 3
+			SetUIStringEx "StartMenu/MCM/*:1/*:1/value/*:1/string" "%k" MCMQuickDropVars.iKeyAct
+			
+			SetUIFloat "StartMenu/MCM/*:1/*:2/_enable" 1
+			SetUIString "StartMenu/MCM/*:1/*:2/_title" "Key for Slot 1"
+			SetUIFloat "StartMenu/MCM/*:1/*:2/_type" 3
+			SetUIStringEx "StartMenu/MCM/*:1/*:2/value/*:1/string" "%k" MCMQuickDropVars.iKey1
+			
+			SetUIFloat "StartMenu/MCM/*:1/*:3/_enable" iTemp
+			SetUIString "StartMenu/MCM/*:1/*:3/_title" "Key for Slot 2"
+			SetUIFloat "StartMenu/MCM/*:1/*:3/_type" 3
+			SetUIStringEx "StartMenu/MCM/*:1/*:3/value/*:1/string" "%k" MCMQuickDropVars.iKey2
+			
+			SetUIFloat "StartMenu/MCM/*:1/*:4/_enable" 1
+			SetUIString "StartMenu/MCM/*:1/*:4/_title" "Item Slot 1"
+			SetUIFloat "StartMenu/MCM/*:1/*:4/_type" 2
+			SetUIFloat "StartMenu/MCM/*:1/*:4/_value" MCMQuickDropVars.iEqSlot1
+			
+			SetUIFloat "StartMenu/MCM/*:1/*:5/_enable" iTemp
+			SetUIString "StartMenu/MCM/*:1/*:5/_title" "Item Slot 2"
+			SetUIFloat "StartMenu/MCM/*:1/*:5/_type" 2
+			SetUIFloat "StartMenu/MCM/*:1/*:5/_value" MCMQuickDropVars.iEqSlot2
+
+		elseif GetUIFloat "StartMenu/MCM/_Default"		;2 - DEFAULT
+			SetUIFloat "StartMenu/MCM/_Default" 0
+			SetUIFloat "StartMenu/MCM/_Reset" 1
+			
+			set MCMQuickDropVars.iKeyAct to 42
+			set MCMQuickDropVars.iKey1 to 19
+			set MCMQuickDropVars.iKey2 to 44
+			set MCMQuickDropVars.iEqSlot1 to 5
+			set MCMQuickDropVars.iEqSlot2 to 2
+			set MCMQuickDropVars.iEnableSlot2 to 0
+
+		elseif GetUIFloat "StartMenu/MCM/_NewValue"		;3 - NEW VALUE
+			SetUIFloat "StartMenu/MCM/_NewValue" 0
+			SetUIFloat "StartMenu/MCM/_Reset" 1
+			
+			if iOption == 1
+				set MCMQuickDropVars.iKeyAct to fValue
+			elseif iOption == 2
+				set MCMQuickDropVars.iKey1 to fValue
+			elseif iOption == 3
+				set MCMQuickDropVars.iKey2 to fValue
+			elseif iOption == 4
+				set MCMQuickDropVars.iEqSlot1 to fValue
+			elseif iOption == 5
+				set MCMQuickDropVars.iEqSlot2 to fValue
+			elseif iOption == 6
+				set MCMQuickDropVars.iEnableSlot2 to fValue
+			endif
+
+
+		elseif GetUIFloat "StartMenu/MCM/_ShowList" == 1		;4 - SHOW LIST
+			SetUIFloat "StartMenu/MCM/_ShowList" 2
+
+		elseif GetUIFloat "StartMenu/MCM/_ShowScale" == 1		;5 - SHOW SCALE
+			SetUIFloat "StartMenu/MCM/_ShowScale" 2
+			
+			if iOption == 4
+				SetUIFloat "StartMenu/MCM/_Value" MCMQuickDropVars.iEqSlot1
+				SetUIFloat "StartMenu/MCM/_ValueDecimal" 0
+				SetUIFloat "StartMenu/MCM/_ValueIncrement" 1
+				SetUIFloat "StartMenu/MCM/_ValueMax" 19
+				SetUIFloat "StartMenu/MCM/_ValueMin" 0
+				SetUIString "StartMenu/MCM/*:2/_title" "Item Slot 1"
+			elseif iOption == 5
+				SetUIFloat "StartMenu/MCM/_Value" MCMQuickDropVars.iEqSlot2
+				SetUIFloat "StartMenu/MCM/_ValueDecimal" 0
+				SetUIFloat "StartMenu/MCM/_ValueIncrement" 1
+				SetUIFloat "StartMenu/MCM/_ValueMax" 19
+				SetUIFloat "StartMenu/MCM/_ValueMin" 0
+				SetUIString "StartMenu/MCM/*:2/_title" "Item Slot 2"
+			endif
+
+		elseif GetUIFloat "StartMenu/MCM/_DefaultScale"		;6 - DEFAULT SCALE
+			SetUIFloat "StartMenu/MCM/_DefaultScale" 0
+			SetUIFloat "StartMenu/MCM/_ShowScale" 2
+			
+			if iOption == 4
+				SetUIFloat "StartMenu/MCM/_Value" 5
+			elseif iOption == 5
+				SetUIFloat "StartMenu/MCM/_Value" 2
+			endif
+
+		endif
+
+		if iMouseover != GetUIFloat "StartMenu/MCM/*:1/_optionID"		;7 - MOUSE-OVER
+			set iMouseover to GetUIFloat "StartMenu/MCM/*:1/_optionID"
+			if iMouseover
+				SetUIFloat "StartMenu/MCM/*:9/visible" 1
+				if iMouseover == 1
+					SetUIString "StartMenu/MCM/*:9/string" "The Activator key is used in combination with the keys for Slot 1 & 2 to drop the item in the respective slot."
+				elseif iMouseover == 2
+					SetUIString "StartMenu/MCM/*:9/string" "The Key for Slot 1 is used in combination with the Activator Key to drop the item in Slot 1."
+				elseif iMouseover == 3
+					SetUIString "StartMenu/MCM/*:9/string" "The Key for Slot 2 is used in combination with the Activator Key to drop the item in Slot 2."
+				elseif iMouseover == 4
+					SetUIString "StartMenu/MCM/*:9/string" "0-Head, 1-Hair, 2-Upper Body, 3-Left Hand, 4-Right Hand, 5-Weapon, 6-Pip-Boy, 7-Backpack, 8-Necklace, 9-Headband, 10-Hat, 11-Eye Glasses, 12-Nose Ring, 13-Earrings, 14-Mask, 15-Choker, 16-Mouth Object, 17-Body Addon 1, 18-Body Addon 2, 19-Body Addon 3, (Be careful with non-standard slots)"
+				elseif iMouseover == 5
+					SetUIString "StartMenu/MCM/*:9/string" "0-Head, 1-Hair, 2-Upper Body, 3-Left Hand, 4-Right Hand, 5-Weapon, 6-Pip-Boy, 7-Backpack, 8-Necklace, 9-Headband, 10-Hat, 11-Eye Glasses, 12-Nose Ring, 13-Earrings, 14-Mask, 15-Choker, 16-Mouth Object, 17-Body Addon 1, 18-Body Addon 2, 19-Body Addon 3, (Be careful with non-standard slots)"
+				elseif iMouseover == 6
+					SetUIString "StartMenu/MCM/*:9/string" "This enables or disables the use of a second slot along with a different key to drop a different equipped item."
+				else
+					SetUIFloat "StartMenu/MCM/*:9/visible" 0
+				endif
+			else
+				SetUIFloat "StartMenu/MCM/*:9/visible" 0
+			endif
+		endif
+	endif
+end

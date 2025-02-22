@@ -1,11 +1,19 @@
 scn QuickDropScript
 
-ref rWeapon
+ref rEquipped1
+ref rEquipped2
 
 Begin GameMode
-	set rWeapon to player.GetEquippedObject 5
+	set rEquipped1 to player.GetEquippedObject MCMQuickDropVars.iEqSlot1
+	set rEquipped2 to player.GetEquippedObject MCMQuickDropVars.iEqSlot2
 
-	if (IsKeyPressed 19 == 1) && (IsKeyPressed 42 == 1)
-		player.Drop rWeapon 1
+	if (IsKeyPressed MCMQuickDropVars.iKey1 == 1) && (IsKeyPressed MCMQuickDropVars.iKeyAct == 1)
+		player.Drop rEquipped1 1
+	endif
+	
+	if (MCMQuickDropVars.iEnableSlot2 == 1)
+		if (IsKeyPressed MCMQuickDropVars.iKey2 == 1) && (IsKeyPressed MCMQuickDropVars.iKeyAct == 1)
+			player.Drop rEquipped2 1
+		endif
 	endif
 End
