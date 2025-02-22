@@ -1,0 +1,11 @@
+scn QuickDropScript
+
+ref rWeapon
+
+Begin GameMode
+	set rWeapon to player.GetEquippedObject 5
+
+	if (IsKeyPressed 19 == 1) && (IsKeyPressed 42 == 1)
+		player.Drop rWeapon 1
+	endif
+End
