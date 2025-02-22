@@ -1,0 +1,2 @@
+TrueCond\ConditionLabel.xml::@prefabs\item_stats_display.xml::ConditionInfo
+true

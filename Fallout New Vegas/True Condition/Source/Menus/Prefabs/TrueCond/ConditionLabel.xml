@@ -1,0 +1,22 @@
+<!-- StarSkull experimental label for the true value -->
+<text name="ConditionLabel">
+	<string>
+		<copy src="parent" trait="user5" />
+		<mul> <copy src="parent" trait="_VUI+CNDmax" /> </mul>
+	</string>
+	<x> 
+		<copy src="sibling(ConditionMeter)" trait="x"/>
+		<sub> <copy src="sibling(ConditionMeter)" trait="width"/> </sub>
+		<add> 2 </add>
+	</x>
+	<y>
+		<copy src="sibling(ConditionMeter)" trait="y"/>
+		<add> 5 </add>
+	</y>
+	<font> <copy src="parent" trait="font" /> </font>
+	<justify> &left; </justify>
+	<visible> <copy src="parent" trait="visible"/> </visible>
+	<brightness> 0 </brightness>
+	<zoom> 80 </zoom>
+	<depth> 20 </depth>
+</text>
