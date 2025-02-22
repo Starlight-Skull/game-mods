@@ -1,0 +1,45 @@
+scn ChallengesScript
+
+array_var aChallenges
+ref rChallenge
+string_var sPlugin
+string_var sNewName
+int iCount
+int iFlags
+int iFind
+
+Begin MenuMode 4
+	if GetGameRestarted != 0
+		iCount := 0
+		ForEach aChallenges <- GetLoadedTypeArray  113
+			let rChallenge := *aChallenges
+
+			let sPlugin := RefToString rChallenge
+			let iFind := sv_Find ":" sPlugin
+			let iFind -= 1
+			let sPlugin := sPlugin[0:iFind]
+			let sPlugin := "Plugins\" + sPlugin
+
+			let sNewName := GetINIString $sPlugin, "Challenges.ini"
+			if sv_Length sNewName
+				let sNewName += " "
+			else
+				SetINIString $sPlugin, "%e", "Challenges.ini"
+				let sNewName := GetINIString sPlugin, "Challenges.ini"
+			endif
+			let sNewName := sNewName + $rChallenge
+
+			;1 Start Disabled		2 Recurring		4 Show Zero Progress
+			let iFlags := GetChallengeFlags rChallenge
+
+			if iFlags == 2 || iFlags == 3 || iFlags == 6 || iFlags == 7
+				let sNewName += " +"
+			endif
+
+			SetName $sNewName rChallenge
+			sv_Destruct sPlugin, sNewName
+			iCount += 1
+		loop
+		Print $iCount + " challenges renamed"
+	endif
+End
