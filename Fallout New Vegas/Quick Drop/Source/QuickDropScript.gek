@@ -7,13 +7,49 @@ Begin GameMode
 	set rEquipped1 to player.GetEquippedObject MCMQuickDropVars.iEqSlot1
 	set rEquipped2 to player.GetEquippedObject MCMQuickDropVars.iEqSlot2
 
-	if (IsKeyPressed MCMQuickDropVars.iKey1 == 1) && (IsKeyPressed MCMQuickDropVars.iKeyAct == 1)
-		player.Drop rEquipped1 1
-	endif
-	
-	if (MCMQuickDropVars.iEnableSlot2 == 1)
-		if (IsKeyPressed MCMQuickDropVars.iKey2 == 1) && (IsKeyPressed MCMQuickDropVars.iKeyAct == 1)
-			player.Drop rEquipped2 1
+	if (IsKeyPressed MCMQuickDropVars.iKeyAct == 1)
+		if ((MCMQuickDropVars.iLimitAngle == 1) && (player.GetAngle x > MCMQuickDropVars.iMaxAngle) && (player.GetAngle x < MCMQuickDropVars.iMinAngle)) || (MCMQuickDropVars.iLimitAngle == 0)
+			if (MCMQuickDropVars.iEnableSlot1 == 1) && (IsKeyPressed MCMQuickDropVars.iKey1 == 1)
+				if (MCMQuickDropVars.iEnableJIP == 1)
+					player.DropAlt rEquipped1 1
+				else
+					player.Drop rEquipped1 1
+				endif
+			endif
+			if (MCMQuickDropVars.iEnableSlot2 == 1) && (IsKeyPressed MCMQuickDropVars.iKey2 == 1)
+				if (MCMQuickDropVars.iEnableJIP == 1)
+					player.DropAlt rEquipped2 1
+				else
+					player.Drop rEquipped2 1
+				endif
+			endif
+		endif
+		
+		if (MCMQuickDropVars.iEnableHotK == 1)
+			if (IsKeyPressed MCMQuickDropVars.iHK1 == 1)
+				SetHotkeyItem 1 rEquipped1
+			endif
+			if (IsKeyPressed MCMQuickDropVars.iHK2 == 1)
+				SetHotkeyItem 2 rEquipped1
+			endif
+			if (IsKeyPressed MCMQuickDropVars.iHK3 == 1)
+				SetHotkeyItem 3 rEquipped1
+			endif
+			if (IsKeyPressed MCMQuickDropVars.iHK4 == 1)
+				SetHotkeyItem 4 rEquipped1
+			endif
+			if (IsKeyPressed MCMQuickDropVars.iHK5 == 1)
+				SetHotkeyItem 5 rEquipped1
+			endif
+			if (IsKeyPressed MCMQuickDropVars.iHK6 == 1)
+				SetHotkeyItem 6 rEquipped1
+			endif
+			if (IsKeyPressed MCMQuickDropVars.iHK7 == 1)
+				SetHotkeyItem 7 rEquipped1
+			endif
+			if (IsKeyPressed MCMQuickDropVars.iHK8 == 1)
+				SetHotkeyItem 8 rEquipped1
+			endif
 		endif
 	endif
 End

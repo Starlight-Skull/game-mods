@@ -1,26 +1,54 @@
 scn MCMQuickDropVarsScript
 
+short iEnableSlot1
 short iEnableSlot2
-
+short iEnableHotK
+short iEnableJIP
 short iEqSlot1
 short iEqSlot2
-
 short iKey1
 short iKey2
 short iKeyAct
-
 short iInit
+short iHK1
+short iHK2
+short iHK3
+short iHK4
+short iHK5
+short iHK6
+short iHK7
+short iHK8
+short iMaxAngle
+short iMinAngle
+short iLimitAngle
 
 begin GameMode
 	if iInit
 	else
 		set iInit to 1
-		
 		set iKeyAct to 42
 		set iKey1 to 19
 		set iKey2 to 44
 		set iEqSlot1 to 5
 		set iEqSlot2 to 2
+		set iEnableSlot1 to 1
 		set iEnableSlot2 to 0
+		set iEnableHotK to 0
+		if GetPluginVersion "JIP NVSE Plugin" < 55.00
+			set iEnableJIP to 0
+		else
+			set iEnableJIP to 1
+		endif
+		set iHK1 to 2
+		set iHK2 to 3
+		set iHK3 to 4
+		set iHK4 to 5
+		set iHK5 to 6
+		set iHK6 to 7
+		set iHK7 to 8
+		set iHK8 to 9
+		set iLimitAngle to 1
+		set iMaxAngle to -75
+		set iMinAngle to 50
 	endif
 end

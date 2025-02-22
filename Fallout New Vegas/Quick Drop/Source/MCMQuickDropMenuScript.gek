@@ -3,8 +3,11 @@ scn MCMQuickDropMenuScript
 short iMaster
 short iMouseover
 short iOption
-short iTemp
-float fTemp
+short iTempS1
+short iTempS2
+short iTempHK
+short iTempJIP
+short iTempAngle
 float fValue
 reference rList
 
@@ -31,39 +34,119 @@ begin MenuMode 1013
 		if GetUIFloat "StartMenu/MCM/_Reset"			;1 - RESET
 			SetUIFloat "StartMenu/MCM/_Reset" 0
 
-			SetUIFloat "StartMenu/MCM/*:1/_columns" 1
+			SetUIFloat "StartMenu/MCM/*:1/_columns" 2
 			
-			set iTemp to 2-MCMQuickDropVars.iEnableSlot2
+			set iTempS1 to 2-MCMQuickDropVars.iEnableSlot1
+			set iTempS2 to 2-MCMQuickDropVars.iEnableSlot2
+			set iTempHK to 2-MCMQuickDropVars.iEnableHotK
+			set iTempAngle to 2-MCMQuickDropVars.iLimitAngle
+			if GetPluginVersion "JIP NVSE Plugin" < 55.00
+				set iTempJIP to 2
+			else
+				set iTempJIP to 1
+			endif
 			
-			SetUIFloat "StartMenu/MCM/*:1/*:6/_enable" 1
-			SetUIString "StartMenu/MCM/*:1/*:6/_title" "Enable Slot 2"
-			SetUIFloat "StartMenu/MCM/*:1/*:6/_type" 5
-			SetUIFloat "StartMenu/MCM/*:1/*:6/_value" MCMQuickDropVars.iEnableSlot2
-			
+		;Left Column
 			SetUIFloat "StartMenu/MCM/*:1/*:1/_enable" 1
-			SetUIString "StartMenu/MCM/*:1/*:1/_title" "Activator Key"
-			SetUIFloat "StartMenu/MCM/*:1/*:1/_type" 3
-			SetUIStringEx "StartMenu/MCM/*:1/*:1/value/*:1/string" "%k" MCMQuickDropVars.iKeyAct
+			SetUIString "StartMenu/MCM/*:1/*:1/_title" "Enable Slot 1"
+			SetUIFloat "StartMenu/MCM/*:1/*:1/_type" 5
+			SetUIFloat "StartMenu/MCM/*:1/*:1/_value" MCMQuickDropVars.iEnableSlot1
 			
-			SetUIFloat "StartMenu/MCM/*:1/*:2/_enable" 1
-			SetUIString "StartMenu/MCM/*:1/*:2/_title" "Key for Slot 1"
+			SetUIFloat "StartMenu/MCM/*:1/*:3/_enable" 1
+			SetUIString "StartMenu/MCM/*:1/*:3/_title" "Enable Slot 2"
+			SetUIFloat "StartMenu/MCM/*:1/*:3/_type" 5
+			SetUIFloat "StartMenu/MCM/*:1/*:3/_value" MCMQuickDropVars.iEnableSlot2
+			
+			SetUIFloat "StartMenu/MCM/*:1/*:5/_enable" 1
+			SetUIString "StartMenu/MCM/*:1/*:5/_title" "Enable setting Hotkeys"
+			SetUIFloat "StartMenu/MCM/*:1/*:5/_type" 5
+			SetUIFloat "StartMenu/MCM/*:1/*:5/_value" MCMQuickDropVars.iEnableHotK
+			
+			SetUIFloat "StartMenu/MCM/*:1/*:7/_enable" 1
+			SetUIString "StartMenu/MCM/*:1/*:7/_title" "Activator Key"
+			SetUIFloat "StartMenu/MCM/*:1/*:7/_type" 3
+			SetUIStringEx "StartMenu/MCM/*:1/*:7/value/*:1/string" "%k" MCMQuickDropVars.iKeyAct
+			
+			SetUIFloat "StartMenu/MCM/*:1/*:9/_enable" iTempS1
+			SetUIString "StartMenu/MCM/*:1/*:9/_title" "Key for Slot 1"
+			SetUIFloat "StartMenu/MCM/*:1/*:9/_type" 3
+			SetUIStringEx "StartMenu/MCM/*:1/*:9/value/*:1/string" "%k" MCMQuickDropVars.iKey1
+			
+			SetUIFloat "StartMenu/MCM/*:1/*:11/_enable" iTempS2
+			SetUIString "StartMenu/MCM/*:1/*:11/_title" "Key for Slot 2"
+			SetUIFloat "StartMenu/MCM/*:1/*:11/_type" 3
+			SetUIStringEx "StartMenu/MCM/*:1/*:11/value/*:1/string" "%k" MCMQuickDropVars.iKey2
+			
+			SetUIFloat "StartMenu/MCM/*:1/*:13/_enable" iTempS1
+			SetUIString "StartMenu/MCM/*:1/*:13/_title" "Item Slot 1"
+			SetUIFloat "StartMenu/MCM/*:1/*:13/_type" 2
+			SetUIFloat "StartMenu/MCM/*:1/*:13/_value" MCMQuickDropVars.iEqSlot1
+			
+			SetUIFloat "StartMenu/MCM/*:1/*:15/_enable" iTempS2
+			SetUIString "StartMenu/MCM/*:1/*:15/_title" "Item Slot 2"
+			SetUIFloat "StartMenu/MCM/*:1/*:15/_type" 2
+			SetUIFloat "StartMenu/MCM/*:1/*:15/_value" MCMQuickDropVars.iEqSlot2
+			
+			SetUIFloat "StartMenu/MCM/*:1/*:17/_enable" iTempJIP
+			SetUIString "StartMenu/MCM/*:1/*:17/_title" "Enable Alternative JIP Functions"
+			SetUIFloat "StartMenu/MCM/*:1/*:17/_type" 5
+			SetUIFloat "StartMenu/MCM/*:1/*:17/_value" MCMQuickDropVars.iEnableJIP
+			
+			SetUIFloat "StartMenu/MCM/*:1/*:19/_enable" 1
+			SetUIString "StartMenu/MCM/*:1/*:19/_title" "Limit viewing angle"
+			SetUIFloat "StartMenu/MCM/*:1/*:19/_type" 5
+			SetUIFloat "StartMenu/MCM/*:1/*:19/_value" MCMQuickDropVars.iLimitAngle
+			
+		;Right Column
+			SetUIFloat "StartMenu/MCM/*:1/*:2/_enable" iTempHK
+			SetUIString "StartMenu/MCM/*:1/*:2/_title" "Hotkey 1"
 			SetUIFloat "StartMenu/MCM/*:1/*:2/_type" 3
-			SetUIStringEx "StartMenu/MCM/*:1/*:2/value/*:1/string" "%k" MCMQuickDropVars.iKey1
+			SetUIStringEx "StartMenu/MCM/*:1/*:2/value/*:1/string" "%k" MCMQuickDropVars.iHK1
 			
-			SetUIFloat "StartMenu/MCM/*:1/*:3/_enable" iTemp
-			SetUIString "StartMenu/MCM/*:1/*:3/_title" "Key for Slot 2"
-			SetUIFloat "StartMenu/MCM/*:1/*:3/_type" 3
-			SetUIStringEx "StartMenu/MCM/*:1/*:3/value/*:1/string" "%k" MCMQuickDropVars.iKey2
+			SetUIFloat "StartMenu/MCM/*:1/*:4/_enable" iTempHK
+			SetUIString "StartMenu/MCM/*:1/*:4/_title" "Hotkey 2"
+			SetUIFloat "StartMenu/MCM/*:1/*:4/_type" 3
+			SetUIStringEx "StartMenu/MCM/*:1/*:4/value/*:1/string" "%k" MCMQuickDropVars.iHK2
 			
-			SetUIFloat "StartMenu/MCM/*:1/*:4/_enable" 1
-			SetUIString "StartMenu/MCM/*:1/*:4/_title" "Item Slot 1"
-			SetUIFloat "StartMenu/MCM/*:1/*:4/_type" 2
-			SetUIFloat "StartMenu/MCM/*:1/*:4/_value" MCMQuickDropVars.iEqSlot1
+			SetUIFloat "StartMenu/MCM/*:1/*:6/_enable" iTempHK
+			SetUIString "StartMenu/MCM/*:1/*:6/_title" "Hotkey 3"
+			SetUIFloat "StartMenu/MCM/*:1/*:6/_type" 3
+			SetUIStringEx "StartMenu/MCM/*:1/*:6/value/*:1/string" "%k" MCMQuickDropVars.iHK3
 			
-			SetUIFloat "StartMenu/MCM/*:1/*:5/_enable" iTemp
-			SetUIString "StartMenu/MCM/*:1/*:5/_title" "Item Slot 2"
-			SetUIFloat "StartMenu/MCM/*:1/*:5/_type" 2
-			SetUIFloat "StartMenu/MCM/*:1/*:5/_value" MCMQuickDropVars.iEqSlot2
+			SetUIFloat "StartMenu/MCM/*:1/*:8/_enable" iTempHK
+			SetUIString "StartMenu/MCM/*:1/*:8/_title" "Hotkey 4"
+			SetUIFloat "StartMenu/MCM/*:1/*:8/_type" 3
+			SetUIStringEx "StartMenu/MCM/*:1/*:8/value/*:1/string" "%k" MCMQuickDropVars.iHK4
+			
+			SetUIFloat "StartMenu/MCM/*:1/*:10/_enable" iTempHK
+			SetUIString "StartMenu/MCM/*:1/*:10/_title" "Hotkey 5"
+			SetUIFloat "StartMenu/MCM/*:1/*:10/_type" 3
+			SetUIStringEx "StartMenu/MCM/*:1/*:10/value/*:1/string" "%k" MCMQuickDropVars.iHK5
+			
+			SetUIFloat "StartMenu/MCM/*:1/*:12/_enable" iTempHK
+			SetUIString "StartMenu/MCM/*:1/*:12/_title" "Hotkey 6"
+			SetUIFloat "StartMenu/MCM/*:1/*:12/_type" 3
+			SetUIStringEx "StartMenu/MCM/*:1/*:12/value/*:1/string" "%k" MCMQuickDropVars.iHK6
+			
+			SetUIFloat "StartMenu/MCM/*:1/*:14/_enable" iTempHK
+			SetUIString "StartMenu/MCM/*:1/*:14/_title" "Hotkey 7"
+			SetUIFloat "StartMenu/MCM/*:1/*:14/_type" 3
+			SetUIStringEx "StartMenu/MCM/*:1/*:14/value/*:1/string" "%k" MCMQuickDropVars.iHK7
+			
+			SetUIFloat "StartMenu/MCM/*:1/*:16/_enable" iTempHK
+			SetUIString "StartMenu/MCM/*:1/*:16/_title" "Hotkey 8"
+			SetUIFloat "StartMenu/MCM/*:1/*:16/_type" 3
+			SetUIStringEx "StartMenu/MCM/*:1/*:16/value/*:1/string" "%k" MCMQuickDropVars.iHK8
+			
+			SetUIFloat "StartMenu/MCM/*:1/*:18/_enable" iTempAngle
+			SetUIString "StartMenu/MCM/*:1/*:18/_title" "Max up angle"
+			SetUIFloat "StartMenu/MCM/*:1/*:18/_type" 2
+			SetUIFloat "StartMenu/MCM/*:1/*:18/_value" MCMQuickDropVars.iMaxAngle
+			
+			SetUIFloat "StartMenu/MCM/*:1/*:20/_enable" iTempAngle
+			SetUIString "StartMenu/MCM/*:1/*:20/_title" "Max down angle"
+			SetUIFloat "StartMenu/MCM/*:1/*:20/_type" 2
+			SetUIFloat "StartMenu/MCM/*:1/*:20/_value" MCMQuickDropVars.iMinAngle
 
 		elseif GetUIFloat "StartMenu/MCM/_Default"		;2 - DEFAULT
 			SetUIFloat "StartMenu/MCM/_Default" 0
@@ -74,24 +157,70 @@ begin MenuMode 1013
 			set MCMQuickDropVars.iKey2 to 44
 			set MCMQuickDropVars.iEqSlot1 to 5
 			set MCMQuickDropVars.iEqSlot2 to 2
+			set MCMQuickDropVars.iEnableSlot1 to 1
 			set MCMQuickDropVars.iEnableSlot2 to 0
+			set MCMQuickDropVars.iEnableHotK to 0
+			set MCMQuickDropVars.iHK1 to 2
+			set MCMQuickDropVars.iHK2 to 3
+			set MCMQuickDropVars.iHK3 to 4
+			set MCMQuickDropVars.iHK4 to 5
+			set MCMQuickDropVars.iHK5 to 6
+			set MCMQuickDropVars.iHK6 to 7
+			set MCMQuickDropVars.iHK7 to 8
+			set MCMQuickDropVars.iHK8 to 9
+			if GetPluginVersion "JIP NVSE Plugin" < 55.00
+				set MCMQuickDropVars.iEnableJIP to 0
+			else
+				set MCMQuickDropVars.iEnableJIP to 1
+			endif
+			set MCMQuickDropVars.iLimitAngle to 1
+			set MCMQuickDropVars.iMaxAngle to -75
+			set MCMQuickDropVars.iMinAngle to 50
 
 		elseif GetUIFloat "StartMenu/MCM/_NewValue"		;3 - NEW VALUE
 			SetUIFloat "StartMenu/MCM/_NewValue" 0
 			SetUIFloat "StartMenu/MCM/_Reset" 1
 			
 			if iOption == 1
-				set MCMQuickDropVars.iKeyAct to fValue
+				set MCMQuickDropVars.iEnableSlot1 to fValue
 			elseif iOption == 2
-				set MCMQuickDropVars.iKey1 to fValue
+				set MCMQuickDropVars.iHK1 to fValue
 			elseif iOption == 3
-				set MCMQuickDropVars.iKey2 to fValue
-			elseif iOption == 4
-				set MCMQuickDropVars.iEqSlot1 to fValue
-			elseif iOption == 5
-				set MCMQuickDropVars.iEqSlot2 to fValue
-			elseif iOption == 6
 				set MCMQuickDropVars.iEnableSlot2 to fValue
+			elseif iOption == 4
+				set MCMQuickDropVars.iHK2 to fValue
+			elseif iOption == 5
+				set MCMQuickDropVars.iEnableHotK to fValue
+			elseif iOption == 6
+				set MCMQuickDropVars.iHK3 to fValue
+			elseif iOption == 7
+				set MCMQuickDropVars.iKeyAct to fValue
+			elseif iOption == 8
+				set MCMQuickDropVars.iHK4 to fValue
+			elseif iOption == 9
+				set MCMQuickDropVars.iKey1 to fValue
+			elseif iOption == 10
+				set MCMQuickDropVars.iHK5 to fValue
+			elseif iOption == 11
+				set MCMQuickDropVars.iKey2 to fValue
+			elseif iOption == 12
+				set MCMQuickDropVars.iHK6 to fValue
+			elseif iOption == 13
+				set MCMQuickDropVars.iEqSlot1 to fValue
+			elseif iOption == 14
+				set MCMQuickDropVars.iHK7 to fValue
+			elseif iOption == 15
+				set MCMQuickDropVars.iEqSlot2 to fValue
+			elseif iOption == 16
+				set MCMQuickDropVars.iHK8 to fValue
+			elseif iOption == 17
+				set MCMQuickDropVars.iEnableJIP to fValue
+			elseif iOption == 18
+				set MCMQuickDropVars.iMaxAngle to fValue
+			elseif iOption == 19
+				set MCMQuickDropVars.iLimitAngle to fValue
+			elseif iOption == 20
+				set MCMQuickDropVars.iMinAngle to fValue
 			endif
 
 
@@ -101,30 +230,48 @@ begin MenuMode 1013
 		elseif GetUIFloat "StartMenu/MCM/_ShowScale" == 1		;5 - SHOW SCALE
 			SetUIFloat "StartMenu/MCM/_ShowScale" 2
 			
-			if iOption == 4
+			if iOption == 13
 				SetUIFloat "StartMenu/MCM/_Value" MCMQuickDropVars.iEqSlot1
 				SetUIFloat "StartMenu/MCM/_ValueDecimal" 0
 				SetUIFloat "StartMenu/MCM/_ValueIncrement" 1
 				SetUIFloat "StartMenu/MCM/_ValueMax" 19
 				SetUIFloat "StartMenu/MCM/_ValueMin" 0
 				SetUIString "StartMenu/MCM/*:2/_title" "Item Slot 1"
-			elseif iOption == 5
+			elseif iOption == 15
 				SetUIFloat "StartMenu/MCM/_Value" MCMQuickDropVars.iEqSlot2
 				SetUIFloat "StartMenu/MCM/_ValueDecimal" 0
 				SetUIFloat "StartMenu/MCM/_ValueIncrement" 1
 				SetUIFloat "StartMenu/MCM/_ValueMax" 19
 				SetUIFloat "StartMenu/MCM/_ValueMin" 0
 				SetUIString "StartMenu/MCM/*:2/_title" "Item Slot 2"
+			elseif iOption == 18
+				SetUIFloat "StartMenu/MCM/_Value" MCMQuickDropVars.iMaxAngle
+				SetUIFloat "StartMenu/MCM/_ValueDecimal" 0
+				SetUIFloat "StartMenu/MCM/_ValueIncrement" 1
+				SetUIFloat "StartMenu/MCM/_ValueMax" 0
+				SetUIFloat "StartMenu/MCM/_ValueMin" -90
+				SetUIString "StartMenu/MCM/*:2/_title" "Max up angle"
+			elseif iOption == 20
+				SetUIFloat "StartMenu/MCM/_Value" MCMQuickDropVars.iMinAngle
+				SetUIFloat "StartMenu/MCM/_ValueDecimal" 0
+				SetUIFloat "StartMenu/MCM/_ValueIncrement" 1
+				SetUIFloat "StartMenu/MCM/_ValueMax" 90
+				SetUIFloat "StartMenu/MCM/_ValueMin" 0
+				SetUIString "StartMenu/MCM/*:2/_title" "Max down angle"
 			endif
 
 		elseif GetUIFloat "StartMenu/MCM/_DefaultScale"		;6 - DEFAULT SCALE
 			SetUIFloat "StartMenu/MCM/_DefaultScale" 0
 			SetUIFloat "StartMenu/MCM/_ShowScale" 2
 			
-			if iOption == 4
+			if iOption == 13
 				SetUIFloat "StartMenu/MCM/_Value" 5
-			elseif iOption == 5
+			elseif iOption == 15
 				SetUIFloat "StartMenu/MCM/_Value" 2
+			elseif iOption == 18
+				SetUIFloat "StartMenu/MCM/_Value" -75
+			elseif iOption == 20
+				SetUIFloat "StartMenu/MCM/_Value" 50
 			endif
 
 		endif
@@ -134,17 +281,29 @@ begin MenuMode 1013
 			if iMouseover
 				SetUIFloat "StartMenu/MCM/*:9/visible" 1
 				if iMouseover == 1
-					SetUIString "StartMenu/MCM/*:9/string" "The Activator key is used in combination with the keys for Slot 1 & 2 to drop the item in the respective slot."
-				elseif iMouseover == 2
-					SetUIString "StartMenu/MCM/*:9/string" "The Key for Slot 1 is used in combination with the Activator Key to drop the item in Slot 1."
+					SetUIString "StartMenu/MCM/*:9/string" "This enables or disables the use of the first slot."
 				elseif iMouseover == 3
-					SetUIString "StartMenu/MCM/*:9/string" "The Key for Slot 2 is used in combination with the Activator Key to drop the item in Slot 2."
-				elseif iMouseover == 4
-					SetUIString "StartMenu/MCM/*:9/string" "0-Head, 1-Hair, 2-Upper Body, 3-Left Hand, 4-Right Hand, 5-Weapon, 6-Pip-Boy, 7-Backpack, 8-Necklace, 9-Headband, 10-Hat, 11-Eye Glasses, 12-Nose Ring, 13-Earrings, 14-Mask, 15-Choker, 16-Mouth Object, 17-Body Addon 1, 18-Body Addon 2, 19-Body Addon 3, (Be careful with non-standard slots)"
+					SetUIString "StartMenu/MCM/*:9/string" "This enables or disables the use of the second slot."
 				elseif iMouseover == 5
+					SetUIString "StartMenu/MCM/*:9/string" "This lets you use the activator key in combination with 1-8 to set your hotkeys outside of the menu."
+				elseif iMouseover == 7
+					SetUIString "StartMenu/MCM/*:9/string" "The Activator key is used in combination with the keys for Slot 1 & 2 to drop the item in the respective slot."
+				elseif iMouseover == 9
+					SetUIString "StartMenu/MCM/*:9/string" "The Key for Slot 1 is used in combination with the Activator Key to drop the item in Slot 1."
+				elseif iMouseover == 11
+					SetUIString "StartMenu/MCM/*:9/string" "The Key for Slot 2 is used in combination with the Activator Key to drop the item in Slot 2."
+				elseif iMouseover == 13
 					SetUIString "StartMenu/MCM/*:9/string" "0-Head, 1-Hair, 2-Upper Body, 3-Left Hand, 4-Right Hand, 5-Weapon, 6-Pip-Boy, 7-Backpack, 8-Necklace, 9-Headband, 10-Hat, 11-Eye Glasses, 12-Nose Ring, 13-Earrings, 14-Mask, 15-Choker, 16-Mouth Object, 17-Body Addon 1, 18-Body Addon 2, 19-Body Addon 3, (Be careful with non-standard slots)"
-				elseif iMouseover == 6
-					SetUIString "StartMenu/MCM/*:9/string" "This enables or disables the use of a second slot along with a different key to drop a different equipped item."
+				elseif iMouseover == 15
+					SetUIString "StartMenu/MCM/*:9/string" "0-Head, 1-Hair, 2-Upper Body, 3-Left Hand, 4-Right Hand, 5-Weapon, 6-Pip-Boy, 7-Backpack, 8-Necklace, 9-Headband, 10-Hat, 11-Eye Glasses, 12-Nose Ring, 13-Earrings, 14-Mask, 15-Choker, 16-Mouth Object, 17-Body Addon 1, 18-Body Addon 2, 19-Body Addon 3, (Be careful with non-standard slots)"
+				elseif iMouseover == 17
+					SetUIString "StartMenu/MCM/*:9/string" "Uses JIP function 'DropAlt' in stead of Vanilla 'Drop'. This should keep track of item stats better."
+				elseif iMouseover == 18
+					SetUIString "StartMenu/MCM/*:9/string" "The highest angle you can look up while still being able to Quick Drop. Yes I know the scales are upside down, that's how the game calculates it."
+				elseif iMouseover == 19
+					SetUIString "StartMenu/MCM/*:9/string" "The Quick Drop keybind won't work when you're looking outside of these X values. This is because of a bug that tends to drop items below the floor when looking at certain angles. It's still not guaranteed to always work as it seems to also be dependent on Z angles (left-right) but it should at least help."
+				elseif iMouseover == 20
+					SetUIString "StartMenu/MCM/*:9/string" "The lowest angle you can look down while still being able to Quick Drop. Yes I know the scales are upside down, that's how the game calculates it."
 				else
 					SetUIFloat "StartMenu/MCM/*:9/visible" 0
 				endif
