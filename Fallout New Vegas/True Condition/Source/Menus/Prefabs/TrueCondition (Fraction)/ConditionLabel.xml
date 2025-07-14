@@ -1,0 +1,72 @@
+<!-- StarSkull experimental label for the true value -->
+<!-- Updated to auto-adjust with or without VUI+ -->
+<!-- Modified to also show max CND instead -->
+<text name="ConditionLabel">
+	<string>
+		<copy src="parent" trait="user5" />
+		<mul> <copy src="parent" trait="_VUI+CNDmax" /> </mul>
+	</string>
+	<x> 
+		<copy src="sibling(ConditionMeter)" trait="x"/>
+		<!-- VUI+ changes x so if x != 62 then adjust x here also. -->
+		<sub>
+			<copy src="sibling(ConditionMeter)" trait="width"/>
+			<sub> 2 </sub>
+			<onlyif>
+				<copy src="sibling(ConditionMeter)" trait="x"/>
+				<neq> 62 </neq>
+			</onlyif>
+		</sub>
+	</x>
+	<y>
+		<copy src="sibling(ConditionMeter)" trait="y"/>
+		<!-- VUI+ changes height so if height != 20 then adjust x here also. -->
+		<add> 
+			<copy> 2 </copy>
+			<add>
+				<copy> 3 </copy>
+				<onlyif>
+					<copy src="sibling(ConditionMeter)" trait="height"/>
+					<neq> 20 </neq>
+				</onlyif>
+			</add>
+		</add>
+	</y>
+	<font> <copy src="parent" trait="font" /> </font>
+	<justify> &left; </justify>
+	<visible> <copy src="parent" trait="visible"/> </visible>
+	<brightness> 0 </brightness>
+	<zoom> 80 </zoom>
+	<depth> 20 </depth>
+</text>
+<!-- Additional label for division sign bacause string contactenation doesn't seem to be possible outside of code -->
+<text name="ConditionLabelDiv">
+	<string> / </string>
+	<x> 
+		<copy src="sibling(ConditionLabel)" trait="x"/>
+		<add> <copy src="sibling(ConditionLabel)" trait="width"/> </add>
+	</x>
+	<y> <copy src="sibling(ConditionLabel)" trait="y"/> </y>
+	<font> <copy src="sibling(ConditionLabel)" trait="font"/> </font>
+	<justify> <copy src="sibling(ConditionLabel)" trait="justify"/> </justify>
+	<visible> <copy src="sibling(ConditionLabel)" trait="visible"/> </visible>
+	<brightness> <copy src="sibling(ConditionLabel)" trait="brightness"/> </brightness>
+	<zoom> <copy src="sibling(ConditionLabel)" trait="zoom"/> </zoom>
+	<depth> <copy src="sibling(ConditionLabel)" trait="depth"/> </depth>
+</text>
+
+<text name="ConditionLabelMax">
+	<string> <copy src="parent" trait="_VUI+CNDmax" /> </string>
+	<x> 
+		<copy src="sibling(ConditionLabel)" trait="x"/>
+		<add> <copy src="sibling(ConditionLabel)" trait="width"/> </add>
+		<add> <copy src="sibling(ConditionLabelDiv)" trait="width"/> </add>
+	</x>
+	<y> <copy src="sibling(ConditionLabel)" trait="y"/> </y>
+	<font> <copy src="sibling(ConditionLabel)" trait="font"/> </font>
+	<justify> <copy src="sibling(ConditionLabel)" trait="justify"/> </justify>
+	<visible> <copy src="sibling(ConditionLabel)" trait="visible"/> </visible>
+	<brightness> <copy src="sibling(ConditionLabel)" trait="brightness"/> </brightness>
+	<zoom> <copy src="sibling(ConditionLabel)" trait="zoom"/> </zoom>
+	<depth> <copy src="sibling(ConditionLabel)" trait="depth"/> </depth>
+</text>

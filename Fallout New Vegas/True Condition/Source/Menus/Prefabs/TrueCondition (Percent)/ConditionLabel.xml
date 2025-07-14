@@ -1,6 +1,6 @@
 <!-- StarSkull experimental label for the true value -->
+<!-- Updated to auto-adjust with or without VUI+ -->
 <!-- Modified to show percentage instead -->
-<!-- Optimized to use without VUI+ -->
 <text name="ConditionLabel">
 	<string>
 		<copy src="parent" trait="user5" />
@@ -8,10 +8,29 @@
 	</string>
 	<x> 
 		<copy src="sibling(ConditionMeter)" trait="x"/>
+		<!-- VUI+ changes x so if x != 62 then adjust x here also. -->
+		<sub>
+			<copy src="sibling(ConditionMeter)" trait="width"/>
+			<sub> 2 </sub>
+			<onlyif>
+				<copy src="sibling(ConditionMeter)" trait="x"/>
+				<neq> 62 </neq>
+			</onlyif>
+		</sub>
 	</x>
 	<y>
 		<copy src="sibling(ConditionMeter)" trait="y"/>
-		<add> 2 </add>
+		<!-- VUI+ changes height so if height != 20 then adjust x here also. -->
+		<add> 
+			<copy> 2 </copy>
+			<add>
+				<copy> 3 </copy>
+				<onlyif>
+					<copy src="sibling(ConditionMeter)" trait="height"/>
+					<neq> 20 </neq>
+				</onlyif>
+			</add>
+		</add>
 	</y>
 	<font> <copy src="parent" trait="font" /> </font>
 	<justify> &left; </justify>

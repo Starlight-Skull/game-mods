@@ -1,0 +1,102 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://qconsulting.ca/fo3/ModConfig5.0.xsd">
+    <moduleName>True Condition</moduleName>
+
+    <requiredInstallFiles>
+        <file source="Required/TrueCondition.txt" destination="uio/public/TrueCondition.txt"/>
+    </requiredInstallFiles>
+
+    <installSteps order="Explicit">
+        <installStep name="Setup">
+            <optionalFileGroups order="Explicit">
+                <group name="Intro" type="SelectAll">
+                    <plugins order="Explicit">
+
+                        <plugin name="Description">
+                            <description>
+This is a small mod which will display the numeric condition value of your weapon or armor.
+
+- UIO is a hard requirement to allow compatibility between other UI mods.
+- VUI+ is recommended but optional because v2.0 now includes a plugin that provides the needed value.
+                            </description>
+                            <typeDescriptor>
+                                <type name="Required"/>
+                            </typeDescriptor>
+                        </plugin>
+
+                    </plugins>
+                </group>
+
+                <group name="Optional plugin" type="SelectAtMostOne">
+                    <plugins order="Explicit">
+
+                        <plugin name="Install">
+                            <description>
+This plugin contains a bare-bones copy of the VUI+ scripts to provide CNDmax to the UI code.
+
+Install this if you don't use VUI+ and still want to see the current CND or the fraction.
+                            </description>
+                            <files>
+                                <file source="Optional plugin/True Condition.esp" destination="/True Condition.esp"/>
+                            </files>
+                            <typeDescriptor>
+                                <type name="Optional"/>
+                            </typeDescriptor>
+                        </plugin>
+
+                    </plugins>
+                </group>
+
+                <group name="Select version" type="SelectExactlyOne">
+                    <plugins order="Explicit">
+
+                        <plugin name="Show current CND">
+                            <description>
+This will only show item condition.
+
+Requires VUI+ or the optional plugin.
+                            </description>
+                            <image path="FOMOD/A - Current CND.png"/>
+                            <files>
+                                <folder source="A - Current CND" destination="Menus/Prefabs/TrueCondition"/>
+                            </files>
+                            <typeDescriptor>
+                                <type name="Recommended"/>
+                            </typeDescriptor>
+                        </plugin>
+
+                        <plugin name="Show fraction">
+                            <description>
+This version will show item condition and max condition.
+
+Requires VUI+ or the optional plugin.
+                            </description>
+                            <image path="FOMOD/B - Fraction.png"/>
+                            <files>
+                                <folder source="B - Fraction" destination="Menus/Prefabs/TrueCondition"/>
+                            </files>
+                            <typeDescriptor>
+                                <type name="Optional"/>
+                            </typeDescriptor>
+                        </plugin>
+
+                        <plugin name="Show percentage">
+                            <description>
+This version will show item condition as a percentage.
+
+No plugin required.
+                            </description>
+                            <image path="FOMOD/C - Percentage.png"/>
+                            <files>
+                                <folder source="C - Percentage" destination="Menus/Prefabs/TrueCondition"/>
+                            </files>
+                            <typeDescriptor>
+                                <type name="Optional"/>
+                            </typeDescriptor>
+                        </plugin>
+
+                    </plugins>
+                </group>
+            </optionalFileGroups>
+        </installStep>
+    </installSteps>
+</config>
