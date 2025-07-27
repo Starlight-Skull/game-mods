@@ -1,0 +1,53 @@
+string_var sINIPath = "StarlightSkull\Prefixer.ini"
+string_var sFormTypes = GetINIStringOrCreate_Cached "Settings:FormTypes" sINIPath "113" "Ex: FormTypes=10,11,113. See https://geckwiki.com/index.php?title=Form_Type_IDs"
+string_var sRecurring = GetINIStringOrCreate_Cached "Settings:Recurring" sINIPath "+" "String to append to recurring challenges. Leave empty to disable."
+short iRemoveGRA = ToNumber (GetINIStringOrCreate_Cached "Settings:RemoveGRA" sINIPath "0" "Set this to 1 to remove (GRA) tags from challenges.")
+array_var aFormTypes
+array_var aTypeArray
+string_var sPlugin
+string_var sNewName
+string_var sPrefix
+ref rItem
+short iCount = 0
+
+FOREACH aFormTypes <- sv_Split (sFormTypes) ","
+	FOREACH aTypeArray <- GetLoadedTypeArray (#*aFormTypes)
+		rItem = *aTypeArray
+		IF EVAL IsFormValid rItem == 0
+			CONTINUE
+		ENDIF
+
+		; split the plugin name from the ref
+		sPlugin = RefToString rItem
+		sPlugin = sPlugin[0:((sv_Find ":" sPlugin) - 1)]
+		sNewName = GetName rItem
+
+		; challenges only
+		IF EVAL (#*aFormTypes == 113)
+			; remove (GRA) tag if needed
+			IF EVAL (sPlugin == "GunRunnersArsenal.esm") && (iRemoveGRA == 1)
+				sv_Erase sNewName 0 6
+			ENDIF
+			; mark recurring
+			IF EVAL (sv_length sRecurring > 0) && (GetBit (GetChallengeFlags rItem), 1)
+				sNewName += " " + (sRecurring)
+			ENDIF
+		ENDIF
+
+		sPrefix = GetINIStringOrCreate_Cached ("Plugins:" + sPlugin) sINIPath ""
+		IF sv_Length sPrefix > 0
+			sNewName = sPrefix + " " + (sNewName)
+		ENDIF
+
+		IF EVAL sNewName != GetName rItem
+			SetnameEx (sNewName) rItem
+			iCount += 1
+		ENDIF
+	LOOP
+LOOP
+Print "Prefixer: " + $iCount + " records changed."
+SaveCachedIniFile sINIPath
+ClearFileCacheShowOff sINIPath 0
+aFormTypes = ar_null
+aTypeArray = ar_null
+sv_Destruct sINIPath, sPlugin, sNewName, sPrefix, sRecurring, sFormTypes

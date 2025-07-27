@@ -2,16 +2,15 @@
 
 - [Nexus Mods](https://www.nexusmods.com/newvegas/mods/69632)
 
-| Alternative | Version | Upload Date  | File                                                                                                                                                               | Description                                                                                                                                                                                                             |
-| ----------- | ------- | ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Normal      | 1.0     | 8 Aug. 2020  | [Download](https://github.com/Starlight-Skull/game-mods/raw/refs/heads/main/Fallout%20New%20Vegas/Prefixer/Archive/Challenge%20Prefixes%20v1.0.zip)                | Requires base game and DLC. Use only one version.                                                                                                                                                                       |
-| TTW         | 1.0     | 8 Aug. 2020  | [Download](https://github.com/Starlight-Skull/game-mods/raw/refs/heads/main/Fallout%20New%20Vegas/Prefixer/Archive/Challenge%20Prefixes%20v1.0%20-%20TTW.zip)      | Requires Tale of Two Wastelands. Use only one version.                                                                                                                                                                  |
-| Normal      | 1.1     | 5 Dec. 2020  | [Download](https://github.com/Starlight-Skull/game-mods/raw/refs/heads/main/Fallout%20New%20Vegas/Prefixer/Archive/Challenge%20Prefixes%20v1.1.zip)                | Requires base game and DLC. Use only one version.                                                                                                                                                                       |
-| TTW         | 1.1     | 5 Dec. 2020  | [Download](https://github.com/Starlight-Skull/game-mods/raw/refs/heads/main/Fallout%20New%20Vegas/Prefixer/Archive/Challenge%20Prefixes%20v1.1%20-%20TTW.zip)      | Requires Tale of Two Wastelands. Use only one version.                                                                                                                                                                  |
-| Scripted    | 2.0     | 14 Apr. 2022 | [Download](https://github.com/Starlight-Skull/game-mods/raw/refs/heads/main/Fallout%20New%20Vegas/Prefixer/Archive/Challenge%20Prefixes%20v2.0.zip)                | The new version uses a script and an ini file to dynamicaly rename challenges instead of manually renaming them. Requires JIP LN                                                                                        |
-| Prefixer    | 2.1     | 8 Jun. 2022  | [Download](https://github.com/Starlight-Skull/game-mods/raw/refs/heads/main/Fallout%20New%20Vegas/Prefixer/Archive/Challenge%20Prefixes%20v2.1%20-%20Prefixer.zip) | Uses a script and an ini file to dynamicaly rename challenges with a prefix per plugin. If updating from version 2.0, copy the contents of the Challenges.ini to StarlightSkull/Prefixer.ini. Requires xNVSE and JIP LN |
-
-[](./Archive/Challenge%20Prefixes%20v2.1%20-%20Prefixer.zip)
+| Alternative | Version | Upload Date  | File                                                                                                                                                               | Description                                                                                                                                                                                   |
+| ----------- | ------- | ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Normal      | 1.0     | 8 Aug. 2020  | [Download](https://github.com/Starlight-Skull/game-mods/raw/refs/heads/main/Fallout%20New%20Vegas/Prefixer/Archive/Challenge%20Prefixes%20v1.0.zip)                | Requires base game and DLC. Use only one version.                                                                                                                                             |
+| TTW         | 1.0     | 8 Aug. 2020  | [Download](https://github.com/Starlight-Skull/game-mods/raw/refs/heads/main/Fallout%20New%20Vegas/Prefixer/Archive/Challenge%20Prefixes%20v1.0%20-%20TTW.zip)      | Requires Tale of Two Wastelands. Use only one version.                                                                                                                                        |
+| Normal      | 1.1     | 5 Dec. 2020  | [Download](https://github.com/Starlight-Skull/game-mods/raw/refs/heads/main/Fallout%20New%20Vegas/Prefixer/Archive/Challenge%20Prefixes%20v1.1.zip)                | Requires base game and DLC. Use only one version.                                                                                                                                             |
+| TTW         | 1.1     | 5 Dec. 2020  | [Download](https://github.com/Starlight-Skull/game-mods/raw/refs/heads/main/Fallout%20New%20Vegas/Prefixer/Archive/Challenge%20Prefixes%20v1.1%20-%20TTW.zip)      | Requires Tale of Two Wastelands. Use only one version.                                                                                                                                        |
+| Scripted    | 2.0     | 14 Apr. 2022 | [Download](https://github.com/Starlight-Skull/game-mods/raw/refs/heads/main/Fallout%20New%20Vegas/Prefixer/Archive/Challenge%20Prefixes%20v2.0.zip)                | The new version uses a script and an ini file to dynamicaly rename challenges instead of manually renaming them. Requires JIP LN                                                              |
+| Prefixer    | 2.1     | 8 Jun. 2022  | [Download](https://github.com/Starlight-Skull/game-mods/raw/refs/heads/main/Fallout%20New%20Vegas/Prefixer/Archive/Challenge%20Prefixes%20v2.1%20-%20Prefixer.zip) | Uses a script and an ini file to dynamicaly rename challenges with a prefix per plugin. If updating from version 2.0, copy the contents of the Challenges.ini to StarlightSkull/Prefixer.ini. |
+| ESP-less    | 2.1     | 27 Jul. 2025  | [Download](https://github.com/Starlight-Skull/game-mods/raw/refs/heads/main/Fallout%20New%20Vegas/Prefixer/Archive/Prefixer%20v3.0%20-%20ESP-less.zip)            | Config file from v2.0 should still be compatible                                                                                                                                              |
 
 ## About This Mod
 
@@ -29,54 +28,57 @@ Fully configurable.
 | --------------------------------------------------------------------------------- | ----- |
 | [JIP LN NVSE Plugin](https://www.nexusmods.com/newvegas/mods/58277)               |       |
 | [New Vegas Script Extender (NVSE)](https://www.nexusmods.com/newvegas/mods/67883) |       |
+| [ShowOff xNVSE Plugin](https://www.nexusmods.com/newvegas/mods/72541)             |       |
 
 ## Description
 
-### Update v2.1
+### Update v3.0: Now ESP-less
 
-Another update!
-I cleaned up the script with newer functions, comments, unnecessary statements, etc...
-Based on a suggestion to apply the script on quests the script has been reworked to work with all form types.
-The recurring symbol can now also be set in the INI.
-The INI itself has also been renamed and moved to /config/StarlightSkull/Prefixer.ini. If you had the old INI you can just copy everything under [Plugins].
-
-### Update v2.0
-
-So... after about a year and a half I finally got around to updating this.
-Instead of manually renaming each challenge, the new version uses a script to prefix them based on which esp or esm they're from.
-Prefixes come from the Challenges.ini file. If no entry for a plugin exists, an empty one is added which you can then add a name to.
-The "+" suffix for recurring challenges is also scripted now.
-The downside? is that it now requires [JIP LN](https://www.nexusmods.com/newvegas/mods/58277) but most people will probably have it already.
+The script has been reworked and is now ESP-less. The basic functionality remains the same as in v2.0 but with the added option to automatically remove (GRA) tags. This makes it possible to change the prefix of those challenges without getting double tags.
 
 ### Overview
 
-This mod allows you to configure prefixes per plugin where something comes from similar to how Gun Runner's Arsenal does it.
-Also similar to GRA's star "*" challenges it adds a "+" behind the name for recurring challenges.
-Originally this was only for challenges but now it can affect any possible form type.
-A full list of the possible types can be found on the [geckwiki](https://geckwiki.com/index.php?title=Form_Type_IDs).
+This mod allows you to configure a prefix per plugin. (.esp or .esm) These prefixes will be applied to your configured FormTypes. This only includes challenges by default but can be applied to pretty much anything. A full list of the possible types can be found on [the geckwiki](https://geckwiki.com/index.php?title=Form_Type_IDs).
 
-~~A version for Tale of Two Wastelands is also available.~~
+The original idea was to replicate what Gun Runner's Arsenal does to it's challenges. The mod has since then grown into a tool that can help you find out from what mod a certain thing comes from. This can be useful for example when you have a large amount of quest mods and you can't tell what mod added which quest.
 
-TTW adds all it's challenges in one plugin which means that the new script won't see the difference between Fallout 3 DLC.
-If you prefer it the other way, the old versions are still functional.
+Also similar to GRA's star '***' challenges it adds a '+' behind the name of recurring challenges.
 
-### Compatibility
+#### Usage
+
+- Launch the game once with your favorite mods to generate the config file.
+- Go to 'Data/Config/StarlightSkull/Prefixer.ini' and add prefixes to your liking.
+- Only plugins with the configured FormTypes will be added to the list. If you change the FormTypes, just launch the game again.
+- Leave the line blank to ignore a certain plugin.
+
+#### Compatibility
 
 In theory this should work fine with all mods. In fact that was the point of the scripted version.
-However mods that also rename things will work fine but for example sorting may work differently.
+Take care however with other mods that automatically rename things. For example [Real Weapon Names](https://www.nexusmods.com/newvegas/mods/79396) has to run it's script before this one in case of weapons.
 
-Tested and works alongside with [lStewieAl's Tweaks](https://www.nexusmods.com/newvegas/mods/66347)'s "bRecurringChallengeIndicator = 1"
+As far as I can tell ESP-less / script runner mods are loaded alphabetically. The script is called xPrefixer so that it runs after most others but can still be overwriten.
+
+Tested and works alongside with [lStewieAl's Tweaks's](https://www.nexusmods.com/newvegas/mods/66347) "bRecurringChallengeIndicator = 1"
 
 ## Images
 
-![img-1](./Images/img-1.webp)
-![img-2](./Images/img-2.webp)
-![img-3](./Images/img-3.webp)
-![img-4](./Images/img-4.webp)
-![img-5](./Images/img-5.webp)
+> ![img-1](./Images/img-1.png)
+>
+> ![img-2](./Images/img-2.png)
+>
+> '+' for recurring challenges ![img-3](./Images/img-3.webp)
+>
+> ![img-4](./Images/img-4.webp)
+>
+> Example with questlog ![img-5](./Images/img-5.png)
+>
+> With Stewie Tweaks enabled ![img-6](./Images/img-6.jpeg)
 
 ## Changelog
 
+- Version 3.0
+  - Rewritten for Script Runner
+  - Added option to remove GRA tags from challenges
 - Version 2.1
   - Reworked script to apply to multiple form types.
   - Reworked script to use newer xNVSE functions.
