@@ -1,0 +1,27 @@
+ref rRecipe
+ref rItem
+string_var sName
+string_var sRecipe
+array_var aRecipeInputs
+
+BEGIN FUNCTION { rRecipe }
+    sRecipe = GetName rRecipe
+
+    FOREACH aRecipeInputs <- GetRecipeInputForms rRecipe
+        rItem = *aRecipeInputs
+        sName = GetName rItem
+
+        IF EVAL (sRecipe[0] == "*") && (sName[0] == "*")
+            sName = sName[2:-1]
+            RemoveIniKey ("Items:" + (GetEditorId rItem)) "StarlightSkull\TagForSearch.ini"
+        ELSEIF EVAL (sRecipe[0] != "*") && (sName[0] != "*")
+            sName = "* " + $sName
+            SetIniString ("Items:" + (GetEditorId rItem)) "1" "StarlightSkull\TagForSearch.ini"
+        ENDIF
+
+        SetNameEx (sName) rItem
+    LOOP
+
+    aRecipeInputs = ar_null
+    sv_Destruct sName, sRecipe
+END

@@ -1,0 +1,24 @@
+short iHotkey = 0
+ref rRecipe
+
+iHotkey = ToNumber (GetIniString "Settings:iHotkey" "StarlightSkull\TagForSearch.ini")
+IF iHotkey == 0
+	iHotkey = 20
+	SetIniString "Settings:iHotkey" "20" "StarlightSkull\TagForSearch.ini"
+ENDIF
+
+SetEventHandler ("OnKeyDown:" + $iHotkey) (BEGIN FUNCTION {short iKey}
+	; Inventory || Container
+	IF (MenuMode 1002) || (MenuMode 1008)
+		Call (CompileScript "TagItem.gek") (GetSelectedItemRef)
+    	RefreshItemsList
+	ENDIF
+
+	; Recipe Menu
+	IF (MenuMode 1077)
+		rRecipe = GetRecipeMenuSelection
+		Call (CompileScript "TagRecipeItems.gek") rRecipe
+		Call (CompileScript "TagItem.gek") rRecipe
+    	RefreshItemsList
+	ENDIF
+END)

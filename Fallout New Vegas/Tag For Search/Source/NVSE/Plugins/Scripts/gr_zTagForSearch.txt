@@ -1,0 +1,20 @@
+array_var aItems
+ref rItem
+short iCount = 0
+short iCountInv = 0
+
+; add tags to list from INI
+FOREACH aItems <- ar_Keys (GetIniSection "Items" "StarlightSkull\TagForSearch.ini")
+    rItem = EditorIDToFormID ($*aItems)
+
+    IF EVAL IsFormValid rItem == 0
+        iCountInv += 1
+        CONTINUE
+    ENDIF
+
+    SetNameEx ("* " + (GetName rItem)) rItem
+    iCount += 1
+LOOP
+
+Print "TagForSearch: " + $iCount + " items tagged, " + $iCountInv + " invalid."
+aItems = ar_null

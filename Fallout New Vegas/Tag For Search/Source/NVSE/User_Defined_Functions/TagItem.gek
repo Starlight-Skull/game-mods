@@ -1,0 +1,17 @@
+ref rItem
+string_var sName
+
+BEGIN FUNCTION { rItem }
+    sName = GetName rItem
+
+    IF EVAL sName[0] == "*"
+        sName = sName[2:-1]
+        RemoveIniKey ("Items:" + (GetEditorId rItem)) "StarlightSkull\TagForSearch.ini"
+    ELSE
+        sName = "* " + $sName
+        SetIniString ("Items:" + (GetEditorId rItem)) "1" "StarlightSkull\TagForSearch.ini"
+    ENDIF
+
+    SetNameEx (sName) rItem
+    sv_Destruct sName
+END
