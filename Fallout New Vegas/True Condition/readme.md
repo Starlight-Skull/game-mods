@@ -59,14 +59,20 @@ In theory the mod should work fine with other UI overhauls but I haven't tested 
 
 ## Images
 
-> ![img-1](./Images/img-1.webp)
+> ![img-1](./Images/img-1.png)
 >
 > Note that this mod only changes the text over the CND bar ![img-2](./Images/img-2.webp)
 >
-> Alternative version with maximum ![img-6](./Images/img-6.webp)
+> Alternative version with maximum ![img-3](./Images/img-3.jpeg)
 >
-> Alternative version with percent instead ![img-3](./Images/img-3.webp)
->
-> Vanilla version without VUI+ ![img-4](./Images/img-4.webp)
+> Alternative version with percent instead ![img-4](./Images/img-4.webp)
 >
 > Also on container menu ![img-5](./Images/img-5.webp)
+
+## Changelogs
+
+- Version 2.0
+  - Added optional plugin
+  - Updated code to work with or without VUI+
+  - Added Fraction version
+  - Added FOMOD installer
