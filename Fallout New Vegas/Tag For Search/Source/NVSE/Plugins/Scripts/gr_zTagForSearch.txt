@@ -1,20 +1,20 @@
-array_var aItems
-ref rItem
-short iCount = 0
-short iCountInv = 0
+Call (CompileScript "TagForSearch/Startup.gek")
 
-; add tags to list from INI
-FOREACH aItems <- ar_Keys (GetIniSection "Items" "StarlightSkull\TagForSearch.ini")
-    rItem = EditorIDToFormID ($*aItems)
+; fix ini settings
+short iHotkey = ToNumber (GetIniString "Settings:iHotkey" "StarlightSkull/TagForSearch.ini")
+short iController = ToNumber (GetIniString "Settings:iController" "StarlightSkull/TagForSearch.ini")
+float fControllerDelay = ToNumber (GetIniString "Settings:fControllerDelay" "StarlightSkull/TagForSearch.ini")
+IF iHotkey == 0 ; default 'T'
+	iHotkey = 20
+	SetIniString "Settings:iHotkey" ($iHotkey) "StarlightSkull/TagForSearch.ini"
+ENDIF
+IF iController == 0 ; default 'Y' + 0.5 seconds
+	iController = 32768
+	fControllerDelay = 0.5
+	SetIniString "Settings:iController" ($iController) "StarlightSkull/TagForSearch.ini"
+	SetIniString "Settings:fControllerDelay" ($fControllerDelay) "StarlightSkull/TagForSearch.ini"
+ENDIF
 
-    IF EVAL IsFormValid rItem == 0
-        iCountInv += 1
-        CONTINUE
-    ENDIF
-
-    SetNameEx ("* " + (GetName rItem)) rItem
-    iCount += 1
-LOOP
-
-Print "TagForSearch: " + $iCount + " items tagged, " + $iCountInv + " invalid."
-aItems = ar_null
+ref MainScript = CompileScript "TagForSearch/Main.gek"
+SetEventHandler ("OnKeyDown:"+$iHotkey) MainScript
+SetEventHandler ("OnButtonDown:"+$iController) ({short iKey} => CallAfterSeconds fControllerDelay MainScript 2 iKey)

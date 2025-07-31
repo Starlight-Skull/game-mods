@@ -1,0 +1,5 @@
+{
+	"icons": [
+		{ "priority": 100, "tag": "(aaaa)", "systemcolor": -1, "template": "ySIDefault", "filename": "interface\\icons\\Tag_For_Search.dds" }
+	]
+}

@@ -1,0 +1,96 @@
+ref rItem
+ref rForm
+string_var sName
+string_var sRecipe
+string_var sTag
+array_var aRecipeInputs
+
+BEGIN FUNCTION {short iKey}
+    ; stop if console is open || if not still pressed after delay
+    IF MenuMode 3 || (IsKeyPressed iKey == 0 && IsButtonPressed iKey == 0)
+        RETURN
+    ENDIF
+
+    short yUIMode = IsPluginInstalled "yUI" && FileExists "Menus/ySI/ySI.xml"
+
+	; Inventory || Container
+	IF MenuMode 1002 || MenuMode 1008
+		rItem = GetSelectedItemRef
+        rForm = rItem.GetBaseForm
+        sName = GetName rForm
+        IF EVAL sName[0] != "*"
+            ; add tag
+            sName = "* "+$sName
+            IF yUIMode
+                sTag = rItem.ySIGetTrait "tag"
+                IF EVAL sTag != "(aaaa)"
+                    SetIniString ("Items:"+(GetEditorId rForm)) (sTag) "StarlightSkull/TagForSearch.ini"
+                    ySISetTrait "tag" "(aaaa)" rForm
+                ENDIF
+            ELSE
+                SetIniString ("Items:"+(GetEditorId rForm)) "1" "StarlightSkull/TagForSearch.ini"
+            ENDIF
+        ELSE
+            ; remove tag
+            sName = sName[2:-1]
+            IF yUIMode
+                sTag = GetIniString ("Items:"+(GetEditorId rForm)) "StarlightSkull/TagForSearch.ini"
+                IF EVAL sTag != "1" && sTag != ""
+                    ySISetTrait "tag" (sTag) rForm
+                ENDIF
+            ENDIF
+            RemoveIniKey ("Items:"+(GetEditorId rForm)) "StarlightSkull/TagForSearch.ini"
+        ENDIF
+        SetNameEx (sName) rForm
+    	RefreshItemsList
+	ENDIF
+
+
+	; Recipe Menu
+	IF MenuMode 1077
+		rItem = GetRecipeMenuSelection
+        sRecipe = GetName rItem
+
+        ; tag ingredients
+        FOREACH aRecipeInputs <- GetRecipeInputForms rItem
+            rForm = *aRecipeInputs
+            sName = GetName rForm
+            IF EVAL (sRecipe[0] != "*") && (sName[0] != "*")
+                ; add tag
+                sName = "* "+$sName
+                IF yUIMode
+                    sTag = ySIGetTrait "tag" rForm
+                    SetIniString ("Items:"+(GetEditorId rForm)) (sTag) "StarlightSkull/TagForSearch.ini"
+                    ySISetTrait "tag" "(aaaa)" rForm
+                ELSE
+                    SetIniString ("Items:"+(GetEditorId rForm)) "1" "StarlightSkull/TagForSearch.ini"
+                ENDIF
+            ELSEIF EVAL (sRecipe[0] == "*") && (sName[0] == "*")
+                ; remove tag
+                IF yUIMode
+                    sTag = GetIniString ("Items:"+(GetEditorId rForm)) "StarlightSkull/TagForSearch.ini"
+                    IF EVAL sTag != "1"
+                        ySISetTrait "tag" (sTag) rForm
+                    ENDIF
+                ENDIF
+                sName = sName[2:-1]
+                RemoveIniKey ("Items:"+(GetEditorId rForm)) "StarlightSkull/TagForSearch.ini"
+            ENDIF
+            SetNameEx (sName) rForm
+        LOOP
+
+        ; tag recipe
+        IF EVAL sRecipe[0] != "*"
+            sRecipe = "* "+$sRecipe
+            SetIniString ("Recipes:"+(GetEditorId rItem)) "1" "StarlightSkull/TagForSearch.ini"
+        ELSE
+            sRecipe = sRecipe[2:-1]
+            RemoveIniKey ("Recipes:"+(GetEditorId rItem)) "StarlightSkull/TagForSearch.ini"
+        ENDIF
+        SetNameEx (sRecipe) rItem
+    	RefreshItemsList
+	ENDIF
+
+    aRecipeInputs = ar_null
+    sv_Destruct sName, sRecipe, sTag
+END

@@ -1,0 +1,45 @@
+BEGIN FUNCTION {}
+    short iCount = 0
+    short iCountInv = 0
+    short yUIMode = IsPluginInstalled "yUI" && FileExists "Menus/ySI/ySI.xml"
+    ref rForm
+    array_var aItem
+
+    ; [Items] section
+    FOREACH aItem <- GetIniSection "Items" "StarlightSkull/TagForSearch.ini"
+        rForm = EditorIDToFormID (aItem["key"])
+        IF EVAL IsFormValid rForm == 0
+            iCountInv += 1
+            CONTINUE
+        ENDIF
+
+        ; move Recipes to new INI section
+        IF GetType rForm == 106
+            RemoveIniKey ("Items:"+(aItem["key"])) "StarlightSkull/TagForSearch.ini"
+            SetIniString ("Recipes:"+(aItem["key"])) (aItem["value"]) "StarlightSkull/TagForSearch.ini"
+            CONTINUE
+        ENDIF
+
+        ; apply yUI Sorting Icon
+        IF EVAL yUIMode && GetIsItem rForm && aItem["value"] != "1"
+            ySISetTrait "tag" "(aaaa)" rForm
+        ENDIF
+
+        SetNameEx ("* "+(GetName rForm)) rForm
+        iCount += 1
+    LOOP
+
+    ; [Recipes] section
+    FOREACH aItem <- GetIniSection "Recipes" "StarlightSkull/TagForSearch.ini"
+        rForm = EditorIDToFormID (aItem["key"])
+        IF EVAL IsFormValid rForm == 0
+            iCountInv += 1
+            CONTINUE
+        ENDIF
+        SetNameEx ("* "+(GetName rForm)) rForm
+        iCount += 1
+    LOOP
+
+    Print "TagForSearch: "+$iCount+" items tagged, "+$iCountInv+" invalid."
+    aItem = ar_null
+END
