@@ -10,7 +10,7 @@
 | TTW         | 1.1     | 5 Dec. 2020  | [Download](https://github.com/Starlight-Skull/game-mods/raw/refs/heads/main/Fallout%20New%20Vegas/Prefixer/Archive/Challenge%20Prefixes%20v1.1%20-%20TTW.zip)      | Requires Tale of Two Wastelands. Use only one version.                                                                                                                                        |
 | Scripted    | 2.0     | 14 Apr. 2022 | [Download](https://github.com/Starlight-Skull/game-mods/raw/refs/heads/main/Fallout%20New%20Vegas/Prefixer/Archive/Challenge%20Prefixes%20v2.0.zip)                | The new version uses a script and an ini file to dynamicaly rename challenges instead of manually renaming them. Requires JIP LN                                                              |
 | Prefixer    | 2.1     | 8 Jun. 2022  | [Download](https://github.com/Starlight-Skull/game-mods/raw/refs/heads/main/Fallout%20New%20Vegas/Prefixer/Archive/Challenge%20Prefixes%20v2.1%20-%20Prefixer.zip) | Uses a script and an ini file to dynamicaly rename challenges with a prefix per plugin. If updating from version 2.0, copy the contents of the Challenges.ini to StarlightSkull/Prefixer.ini. |
-| ESP-less    | 2.1     | 27 Jul. 2025  | [Download](https://github.com/Starlight-Skull/game-mods/raw/refs/heads/main/Fallout%20New%20Vegas/Prefixer/Archive/Prefixer%20v3.0%20-%20ESP-less.zip)            | Config file from v2.0 should still be compatible                                                                                                                                              |
+| ESP-less    | 2.1     | 27 Jul. 2025 | [Download](https://github.com/Starlight-Skull/game-mods/raw/refs/heads/main/Fallout%20New%20Vegas/Prefixer/Archive/Prefixer%20v3.0%20-%20ESP-less.zip)             | Config file from v2.0 should still be compatible                                                                                                                                              |
 
 ## About This Mod
 
@@ -18,7 +18,7 @@
 
 ![banner](./Images/banner.webp)
 
-Prefixes the name of challenges, quests and others with the plugin they come from, similar to the (GRA) from Gun Runner's Arsenal.
+Prefixes the name of challenges, quests and anything else with the plugin they come from, similar to the (GRA) from Gun Runner's Arsenal.
 Also suffixes a "+" for recurring challenges.
 Fully configurable.
 
