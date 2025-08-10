@@ -1,0 +1,26 @@
+<!--
+Author   Starlight Skull
+Project  Tag For Search
+Version  2.1
+Date     2025-08-09
+-->			
+<rect name="CM_ButtonTFS">
+	<include src="text_box.xml"/>
+
+	<x>
+		<copy src="sibling(CM_TakeAllButton)" trait="x"/>
+		<add> <copy src="sibling(CM_TakeAllButton)" trait="width" /> </add>
+		<sub> <copy src="me()" trait="width" /> </sub>
+	</x>
+
+	<_y>
+		<copy src="sibling(CM_TakeAllButton)" trait="_y"/>
+		<sub> <copy src="me()" trait="height"/> </sub>
+	</_y>
+	
+	<_verbuf> 15 </_verbuf>
+	<justify> &right; </justify>
+	<_xbox_button> &xbuttonY; </_xbox_button>
+	<_PCButtonText> T) </_PCButtonText>
+	<string> Tag for search </string>
+</rect>

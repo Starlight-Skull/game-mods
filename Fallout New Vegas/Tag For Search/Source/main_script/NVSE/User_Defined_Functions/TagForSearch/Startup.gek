@@ -1,0 +1,52 @@
+;; Author   Starlight Skull
+;; Project  Tag For Search
+;; Version  2.1
+;; Date     2025-08-10
+
+ref rForm
+array_var aItem
+string_var sName
+
+BEGIN FUNCTION {}
+    short iCountItems = 0
+    short iCountRecipes = 0
+    short iCountInvalid = 0
+
+    ;; [Items] section
+    FOREACH aItem <- GetIniSection "Items" "StarlightSkull/TagForSearch.ini"
+        rForm = EditorIDToFormID (aItem["key"])
+        IF EVAL IsFormValid rForm == 0
+            iCountInvalid += 1
+            CONTINUE
+        ENDIF
+
+        ;; compatibility for < v2.0
+        ;; move Recipes to new INI section
+        IF GetType rForm == 106
+            RemoveIniKey ("Items:"+(aItem["key"])) "StarlightSkull/TagForSearch.ini"
+            SetIniString ("Recipes:"+(aItem["key"])) (aItem["value"]) "StarlightSkull/TagForSearch.ini"
+            CONTINUE
+        ENDIF
+
+        Call (CompileScript "TagForSearch/SetTag.gek") rForm 1
+        iCountItems += 1
+    LOOP
+
+    ;; [Recipes] section
+    FOREACH aItem <- GetIniSection "Recipes" "StarlightSkull/TagForSearch.ini"
+        rForm = EditorIDToFormID (aItem["key"])
+        sName = GetName rForm
+        IF EVAL IsFormValid rForm == 0
+            iCountInvalid += 1
+            CONTINUE
+        ENDIF
+        IF EVAL sName[0] != "*"
+            SetNameEx ("* "+$sName) rForm
+        ENDIF
+        iCountRecipes += 1
+    LOOP
+
+    PrintC "TagForSearch: %g items tagged, %g recipes, %g invalid.", iCountItems, iCountRecipes, iCountInvalid
+    aItem = ar_null
+    sv_Destruct sName
+END

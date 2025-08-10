@@ -1,0 +1,28 @@
+;; Author   Starlight Skull
+;; Project  Tag For Search
+;; Version  2.1
+;; Date     2025-08-09
+
+short iSet
+ref rForm
+string_var sName
+
+BEGIN FUNCTION { rForm, iSet }
+    sName = GetName rForm
+    IF iSet != 0
+        ;; add tag
+        IF EVAL sName[0] != "*"
+            SetNameEx ("* "+$sName) rForm
+        ENDIF
+        sName = GetEditorId rForm
+        SetIniString ("Items:"+$sName) "1" "StarlightSkull/TagForSearch.ini"
+    ELSE
+        ;; remove tag
+        IF EVAL sName[0] == "*"
+            SetNameEx (sName[2:-1]) rForm
+        ENDIF
+        sName = GetEditorId rForm
+        RemoveIniKey ("Items:"+$sName) "StarlightSkull/TagForSearch.ini"
+    ENDIF
+    sv_Destruct sName
+END

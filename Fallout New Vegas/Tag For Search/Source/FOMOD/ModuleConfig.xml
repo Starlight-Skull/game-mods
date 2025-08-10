@@ -1,0 +1,141 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://qconsulting.ca/fo3/ModConfig5.0.xsd">
+    <moduleName>Tag For Search</moduleName>
+
+    <requiredInstallFiles>
+        <file source="main_script/NVSE/User_Defined_Functions/TagForSearch/Main.gek" destination="NVSE/User_Defined_Functions/TagForSearch/Main.gek"/>
+        <file source="main_script/NVSE/User_Defined_Functions/TagForSearch/Startup.gek" destination="NVSE/User_Defined_Functions/TagForSearch/Startup.gek"/>
+        <file source="main_script/NVSE/User_Defined_Functions/TagForSearch/SetTag.gek" destination="NVSE/User_Defined_Functions/TagForSearch/SetTag.gek"/>
+    </requiredInstallFiles>
+
+    <installSteps order="Explicit">
+        <installStep name="Setup">
+            <optionalFileGroups order="Explicit">
+                <group name="Intro" type="SelectAll">
+                    <plugins order="Explicit">
+
+                        <plugin name="Description">
+                            <description>
+This is a small ESP-less utility that lets you tag crafting recipes and materials so you can find them easier in the world or in your storage.
+
+Press T or Y on a controller while in your inventory, container or workbench to add a tag to the selected item or recipe.
+
+Base requirements: xNVSE, JIP LN, JohnnyGuitar
+                            </description>
+                            <image path="FOMOD/img-1.png"/>
+                            <typeDescriptor>
+                                <type name="Required"/>
+                            </typeDescriptor>
+                        </plugin>
+
+                    </plugins> 
+                </group>
+
+                <group name="Start when" type="SelectExactlyOne">
+                    <plugins order="Explicit">
+
+                        <plugin name="Game Launch">
+                            <description>
+Default. Script will run at game launch.
+                            </description>
+                            <files>
+                                <file source="main_script/NVSE/Plugins/Scripts/gr_zTagForSearch.txt" destination="NVSE/Plugins/Scripts/gr_zTagForSearch.txt"/>
+                            </files>
+                            <typeDescriptor>
+                                <type name="Recommended"/>
+                            </typeDescriptor>
+                        </plugin>
+
+                        <plugin name="Save load">
+                            <description>
+Run script at save load. May cause a little more overhead but should be compatible with other mods that rename things at save load.
+                            </description>
+                            <files>
+                                <file source="main_script/NVSE/Plugins/Scripts/gr_zTagForSearch.txt" destination="NVSE/Plugins/Scripts/ln_zTagForSearch.txt"/>
+                            </files>
+                            <typeDescriptor>
+                                <type name="Optional"/>
+                            </typeDescriptor>
+                        </plugin>
+
+                    </plugins>
+                </group>
+
+                <group name="ySI Integration" type="SelectAtMostOne">
+                    <plugins order="Explicit">
+
+                        <plugin name="Colored icon">
+                            <description>
+This version will add a magnifying glass icon to tagged items.
+
+The color will adapt to the Pip-Boy color.
+
+Requires yUI and yUI Sorting Icons. WILL NOT WORK WITHOUT yUI.dll!
+                            </description>
+                            <image path="FOMOD/img-2.png"/>
+                            <files>
+                                <file source="ySI_main/NVSE/User_Defined_Functions/TagForSearch/SetTag.gek" destination="NVSE/User_Defined_Functions/TagForSearch/SetTag.gek"/>
+                                <file source="ySI_main/Menus/ySI/TagForSearch.json" destination="Menus/ySI/TagForSearch.json"/>
+                                <file source="ySI_main/Textures/Interface/Icons/Tag_For_Search.dds" destination="Textures/Interface/Icons/Tag_For_Search.dds"/>
+                            </files>
+                        </plugin>
+
+                        <plugin name="White icon">
+                            <description>
+This version will add a magnifying glass icon to tagged items.
+
+The color will stay white, intended for use with Colorful Inventory Ycons but not required.
+
+Requires yUI and yUI Sorting Icons. WILL NOT WORK WITHOUT yUI.dll!
+                            </description>
+                            <image path="FOMOD/img-3.png"/>
+                            <files>
+                                <file source="ySI_main/NVSE/User_Defined_Functions/TagForSearch/SetTag.gek" destination="NVSE/User_Defined_Functions/TagForSearch/SetTag.gek"/>
+                                <file source="ySI_tag_white/Menus/ySI/TagForSearch.json" destination="Menus/ySI/TagForSearch.json"/>
+                                <file source="ySI_main/Textures/Interface/Icons/Tag_For_Search.dds" destination="Textures/Interface/Icons/Tag_For_Search.dds"/>
+                            </files>
+                        </plugin>
+
+                    </plugins>
+                </group>
+
+                <group name="Text label" type="SelectAtMostOne">
+                    <plugins order="Explicit">
+
+                        <plugin name="Tag for search label">
+                            <description>
+This will add a text hint "Tag For Search" to the recipe and container menus. (Not a functional Button)
+
+This will adapt to having a controller active but the text must be manually updated in the .xml files when changing keybinds.
+
+Requires UIO.
+                            </description>
+                            <image path="FOMOD/img-4.png"/>
+                            <files>
+                                <file source="menu_label/Menus/Prefabs/TagForSearch/ContainerLabel.xml" destination="Menus/Prefabs/TagForSearch/ContainerLabel.xml"/>
+                                <file source="menu_label/Menus/Prefabs/TagForSearch/RecipeLabel.xml" destination="Menus/Prefabs/TagForSearch/RecipeLabel.xml"/>
+                                <file source="menu_label/UIO/Public/TagForSearch.txt" destination="UIO/Public/TagForSearch.txt"/>
+                            </files>
+                        </plugin>
+
+                        <plugin name="Track label">
+                            <description>
+This will add a text hint "Track" to the recipe and container menus. (Not a functional Button)
+
+This will adapt to having a controller active but the text must be manually updated in the .xml files when changing keybinds.
+
+Requires UIO.
+                            </description>
+                            <image path="FOMOD/img-5.png"/>
+                            <files>
+                                <file source="menu_label_alt/Menus/Prefabs/TagForSearch/ContainerLabel.xml" destination="Menus/Prefabs/TagForSearch/ContainerLabel.xml"/>
+                                <file source="menu_label_alt/Menus/Prefabs/TagForSearch/RecipeLabel.xml" destination="Menus/Prefabs/TagForSearch/RecipeLabel.xml"/>
+                                <file source="menu_label/UIO/Public/TagForSearch.txt" destination="UIO/Public/TagForSearch.txt"/>
+                            </files>
+                        </plugin>
+
+                    </plugins>
+                </group>
+            </optionalFileGroups>
+        </installStep>
+    </installSteps>
+</config>

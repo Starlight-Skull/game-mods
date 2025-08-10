@@ -1,0 +1,29 @@
+<!--
+Author   Starlight Skull
+Project  Tag For Search
+Version  2.1
+Date     2025-08-09
+-->			
+<rect name="RM_ButtonTFS">
+	<include src="text_box.xml"/>
+
+	<x>
+		<copy src="sibling(RM_ButtonX)" trait="x"/>
+		<add> <copy src="sibling(RM_ButtonX)" trait="width" /> </add>
+		<sub> <copy src="me()" trait="width" /> </sub>
+	</x>
+
+	<_y>
+		<copy src="sibling(RM_ButtonX)" trait="_y"/>
+		<sub>
+			<copy src="me()" trait="height"/>
+			<onlyif src="sibling(RM_ButtonX)" trait="visible"/>
+		</sub>
+	</_y>
+	
+	<_verbuf> 15 </_verbuf>
+	<justify> &right; </justify>
+	<_xbox_button> &xbuttonY; </_xbox_button>
+	<_PCButtonText> T) </_PCButtonText>
+	<string> Tag for search </string>
+</rect>

@@ -1,0 +1,42 @@
+# Manual install instructions
+
+1. Required: contents of main_script go in /Data/
+2. Optional: for yUI + ySI users:
+	a. move contents of /ySI_main/ into /Data/ and overwrite (adds yUI icon)
+	b. Optional: move contents of /ySI_tag_white/ and overwrite (icon will stay white instead of UI color)
+3. Optional: for UIO users:
+	a. move contents of /menu_label/ into /Data/ (will add a label "Tag For Search T)" to container & recipe menu)
+
+## Config options
+
+Config file will be generated at first load at /Data/Config/StarlightSkull/TagForSearch.ini
+Only the [Settings] section should be manually modified.
+The menu labels must be manually updated when changing keybinds.
+See: https://geckwiki.com/index.php?title=DirectX_Scancodes
+And: https://geckwiki.com/index.php?title=IsButtonPressed#XBox_Controller_Button_Codes
+
+Example:
+
+[Settings]
+; keyboard activator - default = T
+iHotkey=20
+
+; controller button  - default = Y
+iController=32768
+
+; how many seconds the controller button should be held for
+; default is 0 seconds
+fControllerDelay=0
+
+
+[Items]
+; tagged items go here
+DrainedSmallEnergyCell=1
+
+[Recipes]
+; tagged recipes go here
+RecipeSmallEnergyCell=1
+
+[Tags]
+; ySI tags go here
+DrainedSmallEnergyCell=(jfb1)

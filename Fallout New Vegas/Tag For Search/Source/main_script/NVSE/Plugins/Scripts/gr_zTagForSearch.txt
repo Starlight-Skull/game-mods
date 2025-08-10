@@ -1,0 +1,32 @@
+;; Author   Starlight Skull
+;; Project  Tag For Search
+;; Version  2.1
+;; Date     2025-08-09
+
+CallAfterSeconds 1 (CompileScript "TagForSearch/Startup.gek") 1
+
+;; get or set ini settings
+short iHotkey = ToNumber (GetIniString "Settings:iHotkey" "StarlightSkull/TagForSearch.ini")
+IF iHotkey == 0 ;; default 'T'
+	iHotkey = 20
+	SetIniString "Settings:iHotkey" ($iHotkey) "StarlightSkull/TagForSearch.ini"
+ENDIF
+short iController = ToNumber (GetIniString "Settings:iController" "StarlightSkull/TagForSearch.ini")
+float fControllerDelay = ToNumber (GetIniString "Settings:fControllerDelay" "StarlightSkull/TagForSearch.ini")
+IF iController == 0 ;; default 'Y' + 0 seconds
+	iController = 32768
+	fControllerDelay = 0 ;; changed default to 0s because it wasn't really needed
+	SetIniString "Settings:iController" ($iController) "StarlightSkull/TagForSearch.ini"
+	SetIniString "Settings:fControllerDelay" ($fControllerDelay) "StarlightSkull/TagForSearch.ini"
+ENDIF
+
+SetEventHandler ("OnKeyDown:"+$iHotkey) (CompileScript "TagForSearch/Main.gek")
+SetEventHandler ("OnButtonDown:"+$iController) ({short iKey} => CallAfterSeconds fControllerDelay (CompileScript "TagForSearch/Main.gek") 2 iKey)
+
+;; disabled this because it's buggy, buttons are just for show now
+; IF FileExists "Menus/Prefabs/TagForSearch/RecipeLabel.xml"
+; 	SetOnMenuClickEventHandler ({short iMenuId, short iTileId, string_var sTileName} => Call (CompileScript "TagForSearch/Main.gek") 0) 1 "RecipeMenu/NOGLOW_BRANCH/RM_ButtonRect/RM_ButtonTFS"
+; ENDIF
+; IF FileExists "Menus/Prefabs/TagForSearch/ContainerLabel.xml"
+; 	SetOnMenuClickEventHandler ({short iMenuId, short iTileId, string_var sTileName} => Call (CompileScript "TagForSearch/Main.gek") 0) 1 "ContainerMenu/NOGLOW_BRANCH/CM_ButtonRect/CM_ButtonTFS"
+; ENDIF

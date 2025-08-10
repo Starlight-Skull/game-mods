@@ -1,0 +1,60 @@
+;; Author   Starlight Skull
+;; Project  Tag For Search
+;; Version  2.1
+;; Date     2025-08-09
+
+ref rItem
+ref rForm
+string_var sName
+string_var sRecipe
+array_var aRecipeInputs
+
+BEGIN FUNCTION {short iKey}
+    ;; stop if console is open || if not still pressed after delay
+    IF MenuMode 3 || (iKey != 0 && IsKeyPressed iKey == 0 && IsButtonPressed iKey == 0)
+        RETURN
+    ENDIF
+
+	;; Inventory || Container
+	IF MenuMode 1002 || MenuMode 1008
+		rItem = GetSelectedItemRef
+        rForm = rItem.GetBaseForm
+        IF EVAL (GetIniString ("Items:"+(GetEditorId rForm)) "StarlightSkull/TagForSearch.ini") != "1"
+            Call (CompileScript "TagForSearch/SetTag.gek") rForm 1
+        ELSE
+            Call (CompileScript "TagForSearch/SetTag.gek") rForm 0
+        ENDIF
+    	RefreshItemsList
+	ENDIF
+
+	;; Recipe Menu
+	IF MenuMode 1077
+		rItem = GetRecipeMenuSelection
+        sRecipe = GetName rItem
+
+        ;; tag ingredients
+        FOREACH aRecipeInputs <- GetRecipeInputForms rItem
+            rForm = *aRecipeInputs
+            sName = GetName rForm
+            IF EVAL (sRecipe[0] != "*") && (sName[0] != "*")
+                Call (CompileScript "TagForSearch/SetTag.gek") rForm 1
+            ELSEIF EVAL (sRecipe[0] == "*") && (sName[0] == "*")
+                Call (CompileScript "TagForSearch/SetTag.gek") rForm 0
+            ENDIF
+        LOOP
+
+        ;; tag recipe
+        IF EVAL sRecipe[0] != "*"
+            sRecipe = "* "+$sRecipe
+            SetIniString ("Recipes:"+(GetEditorId rItem)) "1" "StarlightSkull/TagForSearch.ini"
+        ELSE
+            sRecipe = sRecipe[2:-1]
+            RemoveIniKey ("Recipes:"+(GetEditorId rItem)) "StarlightSkull/TagForSearch.ini"
+        ENDIF
+        SetNameEx (sRecipe) rItem
+    	RefreshItemsList
+	ENDIF
+
+    aRecipeInputs = ar_null
+    sv_Destruct sName, sRecipe
+END

@@ -1,0 +1,37 @@
+;; Author   Starlight Skull
+;; Project  Tag For Search
+;; Version  2.1 (ySI version)
+;; Date     2025-08-09
+
+short iSet
+ref rForm
+string_var sName
+string_var sTag
+
+BEGIN FUNCTION { rForm, iSet }
+    sName = GetName rForm
+    IF iSet != 0
+        ;; add tag
+        IF EVAL sName[0] != "*"
+            SetNameEx ("* "+$sName) rForm
+        ENDIF
+        sName = GetEditorId rForm
+        SetIniString ("Items:"+$sName) "1" "StarlightSkull/TagForSearch.ini"
+        sTag = ySIGetTrait "tag" rForm
+        IF EVAL sTag != "(aaaa)"
+            SetIniString ("Tags:"+$sName) (sTag) "StarlightSkull/TagForSearch.ini"
+            ySISetTrait "tag" "(aaaa)" rForm
+        ENDIF
+    ELSE
+        ;; remove tag
+        IF EVAL sName[0] == "*"
+            SetNameEx (sName[2:-1]) rForm
+        ENDIF
+        sName = GetEditorId rForm
+        sTag = GetIniString ("Tags:"+$sName) "StarlightSkull/TagForSearch.ini"
+        ySISetTrait "tag" (sTag) rForm
+        RemoveIniKey ("Items:"+$sName) "StarlightSkull/TagForSearch.ini"
+        RemoveIniKey ("Tags:"+$sName) "StarlightSkull/TagForSearch.ini"
+    ENDIF
+    sv_Destruct sName, sTag
+END

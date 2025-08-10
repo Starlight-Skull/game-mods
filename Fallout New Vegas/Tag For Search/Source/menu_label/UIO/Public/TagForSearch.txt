@@ -1,0 +1,4 @@
+TagForSearch\RecipeLabel.xml::@recipe_menu.xml::RM_ButtonRect
+true
+TagForSearch\ContainerLabel.xml::@container_menu.xml::CM_ButtonRect
+true
