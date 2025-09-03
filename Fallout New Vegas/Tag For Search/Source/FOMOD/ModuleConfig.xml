@@ -27,7 +27,7 @@ Base requirements: xNVSE, JIP LN, JohnnyGuitar
                             </typeDescriptor>
                         </plugin>
 
-                    </plugins> 
+                    </plugins>
                 </group>
 
                 <group name="Start when" type="SelectExactlyOne">
@@ -77,6 +77,9 @@ Requires yUI and yUI Sorting Icons. WILL NOT WORK WITHOUT yUI.dll!
                                 <file source="ySI_main/Menus/ySI/TagForSearch.json" destination="Menus/ySI/TagForSearch.json"/>
                                 <file source="ySI_main/Textures/Interface/Icons/Tag_For_Search.dds" destination="Textures/Interface/Icons/Tag_For_Search.dds"/>
                             </files>
+                            <typeDescriptor>
+                                <type name="Recommended"/>
+                            </typeDescriptor>
                         </plugin>
 
                         <plugin name="White icon">
@@ -93,6 +96,9 @@ Requires yUI and yUI Sorting Icons. WILL NOT WORK WITHOUT yUI.dll!
                                 <file source="ySI_tag_white/Menus/ySI/TagForSearch.json" destination="Menus/ySI/TagForSearch.json"/>
                                 <file source="ySI_main/Textures/Interface/Icons/Tag_For_Search.dds" destination="Textures/Interface/Icons/Tag_For_Search.dds"/>
                             </files>
+                            <typeDescriptor>
+                                <type name="Optional"/>
+                            </typeDescriptor>
                         </plugin>
 
                     </plugins>
@@ -115,6 +121,9 @@ Requires UIO.
                                 <file source="menu_label/Menus/Prefabs/TagForSearch/RecipeLabel.xml" destination="Menus/Prefabs/TagForSearch/RecipeLabel.xml"/>
                                 <file source="menu_label/UIO/Public/TagForSearch.txt" destination="UIO/Public/TagForSearch.txt"/>
                             </files>
+                            <typeDescriptor>
+                                <type name="Optional"/>
+                            </typeDescriptor>
                         </plugin>
 
                         <plugin name="Track label">
@@ -131,6 +140,9 @@ Requires UIO.
                                 <file source="menu_label_alt/Menus/Prefabs/TagForSearch/RecipeLabel.xml" destination="Menus/Prefabs/TagForSearch/RecipeLabel.xml"/>
                                 <file source="menu_label/UIO/Public/TagForSearch.txt" destination="UIO/Public/TagForSearch.txt"/>
                             </files>
+                            <typeDescriptor>
+                                <type name="Recommended"/>
+                            </typeDescriptor>
                         </plugin>
 
                     </plugins>

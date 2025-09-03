@@ -2,13 +2,14 @@
 
 - [Nexus Mods](https://www.nexusmods.com/newvegas/mods/93094)
 
-| Version | Upload Date  | File                                                                                                                                                        | Description                                    |
-| ------- | ------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------- |
-| 1.0     | 27 Jul. 2025 | [Download](https://github.com/Starlight-Skull/game-mods/raw/refs/heads/main/Fallout%20New%20Vegas/Tag%20For%20Search/Archive/Tag%20For%20Search%20v1.0.zip) | ESP-less, INI will be generated at first load. |
-| 1.1     | 28 Jul. 2025 | [Download](https://github.com/Starlight-Skull/game-mods/raw/refs/heads/main/Fallout%20New%20Vegas/Tag%20For%20Search/Archive/Tag%20For%20Search%20v1.1.zip) | Now with controller support, hold Y.           |
-| 1.2     | 28 Jul. 2025 | [Download](https://github.com/Starlight-Skull/game-mods/raw/refs/heads/main/Fallout%20New%20Vegas/Tag%20For%20Search/Archive/Tag%20For%20Search%20v1.2.zip) | Hotfix for console spam.                       |
-| 2.0     | 31 Jul. 2025 | [Download](https://github.com/Starlight-Skull/game-mods/raw/refs/heads/main/Fallout%20New%20Vegas/Tag%20For%20Search/Archive/Tag%20For%20Search%20v2.0.zip) | Now with optional yUI Sorting Icons support.   |
-| 2.1     | 10 Aug. 2025 | [Download](https://github.com/Starlight-Skull/game-mods/raw/refs/heads/main/Fallout%20New%20Vegas/Tag%20For%20Search/Archive/Tag%20For%20Search%20v2.1.zip) | FOMOD installer.                               |
+| Version | Upload Date  | File                                                                                                                                                          | Description                                    |
+| ------- | ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------- |
+| 1.0     | 27 Jul. 2025 | [Download](https://github.com/Starlight-Skull/game-mods/raw/refs/heads/main/Fallout%20New%20Vegas/Tag%20For%20Search/Archive/Tag%20For%20Search%20v1.0.zip)   | ESP-less, INI will be generated at first load. |
+| 1.1     | 28 Jul. 2025 | [Download](https://github.com/Starlight-Skull/game-mods/raw/refs/heads/main/Fallout%20New%20Vegas/Tag%20For%20Search/Archive/Tag%20For%20Search%20v1.1.zip)   | Now with controller support, hold Y.           |
+| 1.2     | 28 Jul. 2025 | [Download](https://github.com/Starlight-Skull/game-mods/raw/refs/heads/main/Fallout%20New%20Vegas/Tag%20For%20Search/Archive/Tag%20For%20Search%20v1.2.zip)   | Hotfix for console spam.                       |
+| 2.0     | 31 Jul. 2025 | [Download](https://github.com/Starlight-Skull/game-mods/raw/refs/heads/main/Fallout%20New%20Vegas/Tag%20For%20Search/Archive/Tag%20For%20Search%20v2.0.zip)   | Now with optional yUI Sorting Icons support.   |
+| 2.1     | 10 Aug. 2025 | [Download](https://github.com/Starlight-Skull/game-mods/raw/refs/heads/main/Fallout%20New%20Vegas/Tag%20For%20Search/Archive/Tag%20For%20Search%20v2.1.zip)   | FOMOD installer.                               |
+| 2.1.1   |  3 Sep. 2025 | [Download](https://github.com/Starlight-Skull/game-mods/raw/refs/heads/main/Fallout%20New%20Vegas/Tag%20For%20Search/Archive/Tag%20For%20Search%20v2.1.1.zip) | Added missing FOMOD parts for Vortex.           |
 
 ## About This Mod
 
